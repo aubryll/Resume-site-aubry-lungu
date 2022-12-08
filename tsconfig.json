@@ -20,6 +20,7 @@
         "@api/*": ["api/*"],
         "@lib/*": ["lib/*"],
         "@util/*": ["util/*"],
+        "@context/*": ["context/*"],
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],

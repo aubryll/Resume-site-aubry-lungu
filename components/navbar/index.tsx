@@ -13,12 +13,11 @@ import {
   Box,
   AppBar,
   Toolbar,
-  useTheme,
+  Stack,
 } from "@mui/material";
 import { IconBrightness2, IconBrightnessHalf, IconMenu } from "@tabler/icons";
 import { navLinks } from "@util/config";
-import { useContext } from "react";
-import { ColorModeContext } from "pages/_app";
+import { useColorMode } from "@components/context/ColorModeContext";
 
 type NavbarProps = {
   window?: () => Window;
@@ -31,8 +30,7 @@ const Navbar = ({ window }: NavbarProps) => {
   const handleDrawerToggle = () => setMobileOpen(!mobileOpen);
   const container =
     window !== undefined ? () => window().document.body : undefined;
-  const { toggleColorMode } = useContext(ColorModeContext);
-  const theme = useTheme();
+  const { toggleColorMode, mode } = useColorMode();
 
   const drawer = (
     <Box onClick={handleDrawerToggle} sx={{ textAlign: "center" }}>
@@ -57,17 +55,14 @@ const Navbar = ({ window }: NavbarProps) => {
         </ListItem>
 
         <ListItem disablePadding>
-          <ListItemButton sx={{ textAlign: "center" }} onClick={toggleColorMode}>
+          <ListItemButton
+            sx={{ textAlign: "center" }}
+            onClick={toggleColorMode}
+          >
             <ListItemText
-              primary={
-                theme.palette.mode === "light" ? "Light mode" : "Dark mode"
-              }
+              primary={mode === "light" ? "Light mode" : "Dark mode"}
             />
-            {theme.palette.mode === "light" ? (
-              <IconBrightness2 />
-            ) : (
-              <IconBrightnessHalf />
-            )}
+            {mode === "light" ? <IconBrightness2 /> : <IconBrightnessHalf />}
           </ListItemButton>
         </ListItem>
       </List>
@@ -94,21 +89,23 @@ const Navbar = ({ window }: NavbarProps) => {
           >
             Aubry Lungu
           </Typography>
-          <Box sx={{ display: { xs: "none", sm: "block" } }}>
+          <Stack
+            sx={{ display: { xs: "none", sm: "block" } }}
+            direction="row"
+            spacing={4}
+          >
             {navLinks.map(({ name, url }, idx) => (
-              <Button key={idx} LinkComponent={Link} href={url}>
+              <Button key={idx} LinkComponent={Link} href={url} color="inherit">
                 {name}
               </Button>
             ))}
-            <Button variant="outlined">Resume</Button>
-            <IconButton onClick={toggleColorMode}>
-              {theme.palette.mode === "light" ? (
-                <IconBrightness2 />
-              ) : (
-                <IconBrightnessHalf />
-              )}
+            <Button variant="outlined" color="inherit">
+              Resume
+            </Button>
+            <IconButton onClick={toggleColorMode} color="inherit">
+              {mode === "light" ? <IconBrightness2 /> : <IconBrightnessHalf />}
             </IconButton>
-          </Box>
+          </Stack>
         </Toolbar>
       </AppBar>
       <Box component="nav">
