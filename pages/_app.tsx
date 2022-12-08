@@ -9,7 +9,7 @@ import { createTheme, ThemeProvider } from "@mui/material";
 import { AppTheme } from "../components/theme";
 import Head from "next/head";
 
-const ColorModeContext = React.createContext({ toggleColorMode: () => {} });
+export const ColorModeContext = React.createContext({ toggleColorMode: () => {} });
 
 const MyLayout = ({ Component, pageProps }: AppProps) => {
   return (
