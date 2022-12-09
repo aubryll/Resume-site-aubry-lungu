@@ -66,12 +66,12 @@ export const ColorModeContextProvider = ({children}: ColorModeContextProviderPro
 
         typography: {
             fontFamily: `"IBM Plex Sans", sans-serif`,
-            h1: { fontSize: "2.4em", fontFamily: "Plus Jakarta Sans" },
-            h2: { fontSize: "2.1em", fontFamily: "Plus Jakarta Sans" },
-            h3: { fontSize: "1.7em", fontFamily: "Plus Jakarta Sans" },
-            h4: { fontSize: "1.4em", fontFamily: "Plus Jakarta Sans" },
-            h5: { fontSize: "1.2em", fontFamily: "Plus Jakarta Sans" },
-            h6: { fontSize: "1em", fontFamily: "Plus Jakarta Sans" },
+            h1: { fontFamily: `"Plus Jakarta Sans", sans-serif`},
+            h2: { fontFamily: `"Plus Jakarta Sans", sans-serif`},
+            h3: { fontFamily: `"Plus Jakarta Sans", sans-serif`},
+            h4: { fontFamily: `"Plus Jakarta Sans", sans-serif`},
+            h5: { fontFamily: `"Plus Jakarta Sans", sans-serif`},
+            h6: { fontFamily: `"Plus Jakarta Sans", sans-serif`},
             button: { textTransform: "none" },
         },
         components: {
