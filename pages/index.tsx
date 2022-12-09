@@ -1,14 +1,20 @@
-import { Typography } from '@mui/material'
-import Head from 'next/head'
-import Image from 'next/image'
-import styles from '../styles/Home.module.css'
+import Hero from "@components/sections/hero";
+import {
+  Grid,
+  useTheme,
+} from "@mui/material";
 
-type HomeProps = {}
+
+type HomeProps = {};
+
 
 const Home = (props: HomeProps) => {
+  const theme = useTheme()
   return (
-    <><Typography variant='h1'>Aubry Lunfu</Typography></>
-  )
-}
+    <Grid container spacing={4}>
+      <Hero/>
+    </Grid>
+  );
+};
 
-export default Home
+export default Home;

@@ -1,15 +1,20 @@
 import React from "react";
 import type { ThemeOptions } from "@mui/material/styles";
 import { createTheme, ThemeProvider } from "@mui/material";
+import { color } from "@mui/system";
 
-const Colors = {
-    DARK_BLUE: "#1C1259",
-    LIGHT_PURPLE: "#CACAEA",
-    PINK: "#EE4266",
-    ORANGE: "#FF9B00",
-    LIGHT_ORANGE: "#FFD28C",
-    BLACK: "#000000",
-};
+
+const colors = {
+  navy: '#0a192f',
+  lightNavy: '#112240',
+  lightestNavy: '#233554',
+  slate: '#8892b0',
+  lightSlate: '#a8b2d1',
+  lightestSlate: '#ccd6f6',
+  white: '#e6f1ff',
+  green: '#64ffda'
+}
+
 
 type IColorModeContext = {
   toggleColorMode: () => void;
@@ -55,13 +60,20 @@ export const ColorModeContextProvider = ({children}: ColorModeContextProviderPro
       createTheme({
         palette: {
           mode,
+          background: {
+            default: colors.navy,
+          },
             primary: {
-                main: Colors.DARK_BLUE,
-                contrastText: '#fff'
+                main: colors.navy,
+                contrastText: colors.white,
             },
             secondary: {
-                main: "#000000",
+                main: colors.green,
             },
+            text: {
+              primary: colors.white,
+              
+            }, divider: colors.white
         },
 
         typography: {
@@ -72,7 +84,7 @@ export const ColorModeContextProvider = ({children}: ColorModeContextProviderPro
             h4: { fontFamily: `"Plus Jakarta Sans", sans-serif`},
             h5: { fontFamily: `"Plus Jakarta Sans", sans-serif`},
             h6: { fontFamily: `"Plus Jakarta Sans", sans-serif`},
-            button: { textTransform: "none" },
+            button: { textTransform: "none", fontFamily: `"DM Mono", monospace`},
         },
         components: {
             ...componentsOverride,
