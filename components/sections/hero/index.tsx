@@ -9,23 +9,11 @@ import {
   styled,
 } from "@mui/material";
 import Image from "next/image";
+import React from "react";
+import { SectionGridItem, SectionItem } from "../SectionItem";
+import type { BaseSectionProps } from "../type/BaseProps";
 
-type HeroProps = {};
-
-const HeroGridItem = styled(Grid)(({ theme }) => ({
-  display: "flex",
-  alignItems: "center",
-  justifyContent: "center",
-  [theme.breakpoints.down("md")]: {
-    marginTop: theme.spacing(10),
-  },
-  [theme.breakpoints.up("md")]: {
-    minHeight: "100vh",
-  },
-  "@media (max-width: 480px) and (min-height: 700px)": {
-    paddingBottom: theme.spacing(10),
-  },
-}));
+type HeroProps = BaseSectionProps;
 
 const MugShotBox = styled(Box)(({ theme }) => ({
   width: "100%",
@@ -46,37 +34,35 @@ const MugShotBox = styled(Box)(({ theme }) => ({
   },
 }));
 
-const Hero = (props: HeroProps) => {
+export const Hero = (props: HeroProps) => {
   const theme = useTheme();
   return (
     <>
-      <HeroGridItem item xs={12} md={8}>
-        <Stack direction="column" spacing={4}>
-          <Typography variant="h6" fontFamily={`"DM Mono", monospace`}>
-            Hi, I'm
-          </Typography>
-          <Typography
-            component="div"
-            variant="h1"
-            color={theme.palette.secondary.main}
-          >
-            Aubry Lungu.
-          </Typography>
-          <Typography variant="h6" component="div">
-            <Box fontWeight="bold" display="inline">
-              UX/UI Engineer, Software Engineer, and Product Engineer Here!{" "}
-            </Box>
-            Making fantastic digital products that help people is a passion of
-            mine. Currently, I'm a UX/UI engineer at{" "}
-            <CustomLink href="https://www.orbis.org/">
-              Orbis International
-            </CustomLink>
-            , where we use machine learning and artificial intelligence to help
-            eliminate preventable blindness.
-          </Typography>
-        </Stack>
-      </HeroGridItem>
-      <HeroGridItem item xs={12} md={4}>
+      <SectionItem item xs={12} md={8} {...props}>
+        <Typography variant="h6" fontFamily={`"DM Mono", monospace`}>
+          Hi, I'm
+        </Typography>
+        <Typography
+          component="div"
+          variant="h1"
+          color={theme.palette.secondary.main}
+        >
+          Aubry Lungu.
+        </Typography>
+        <Typography variant="h6" component="div">
+          <Box fontWeight="bold" display="inline">
+            UX/UI Engineer, Software Engineer, and Product Engineer Here!{" "}
+          </Box>
+          Making fantastic digital products that help people is a passion of
+          mine. Currently, I'm a UX/UI engineer at{" "}
+          <CustomLink href="https://www.orbis.org/">
+            Orbis International
+          </CustomLink>
+          , where we use machine learning and artificial intelligence to help
+          eliminate preventable blindness.
+        </Typography>
+      </SectionItem>
+      <SectionGridItem item xs={12} md={4}>
         <MugShotBox>
           <div>
             <Image
@@ -97,9 +83,7 @@ const Hero = (props: HeroProps) => {
             />
           </div>
         </MugShotBox>
-      </HeroGridItem>
+      </SectionGridItem>
     </>
   );
 };
-
-export default Hero;

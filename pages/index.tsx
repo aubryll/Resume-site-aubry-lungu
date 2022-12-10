@@ -1,14 +1,65 @@
-import Hero from "@components/sections/hero";
-import { Grid, useTheme } from "@mui/material";
+import { Hero, About } from "@components/sections";
+import {
+  Fab,
+  Fade,
+  Grid,
+  Box,
+  useScrollTrigger,
+} from "@mui/material";
+import { IconArrowUp } from "@tabler/icons";
 
 type HomeProps = {};
 
-const Home = (props: HomeProps) => {
-  const theme = useTheme();
+type ScrollToTopProps = {
+  window?: () => Window;
+  children: React.ReactElement;
+};
+const ScrollToTop = ({ window, children }: ScrollToTopProps) => {
+  const trigger = useScrollTrigger({
+    target: window ? window() : undefined,
+    disableHysteresis: true,
+    threshold: 100,
+  });
+
+  const handleClick = (event: React.MouseEvent<HTMLDivElement>) => {
+    const anchor = (
+      (event.target as HTMLDivElement).ownerDocument || document
+    ).querySelector("#hero-content");
+
+    if (anchor) {
+      anchor.scrollIntoView({
+        block: "end",
+        behavior: "smooth",
+      });
+    }
+  };
+
   return (
-    <Grid container spacing={4}>
-      <Hero />
-    </Grid>
+    <Fade in={trigger}>
+      <Box
+        onClick={handleClick}
+        role="presentation"
+        sx={{ position: "fixed", bottom: 16, right: 16 }}
+      >
+        {children}
+      </Box>
+    </Fade>
+  );
+};
+
+const Home = (props: HomeProps) => {
+  return (
+    <>
+      <Grid container spacing={4} mb={4}>
+        <Hero id="hero-content" />
+        <About id="about-content" />
+      </Grid>
+      <ScrollToTop {...props}>
+        <Fab size="small" aria-label="scroll back to top">
+          <IconArrowUp />
+        </Fab>
+      </ScrollToTop>
+    </>
   );
 };
 

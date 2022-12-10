@@ -39,60 +39,26 @@ type AppBarProps = {
 };
 const drawerWidth = 240;
 
-const HideOnScroll = ({ window, children }: AppBarProps) => {
-  const trigger = useScrollTrigger({
+const AppBarUtil = ({ window, children }: AppBarProps) => {
+  const hideOnScrollTrigger = useScrollTrigger({
     target: window ? window() : undefined,
   });
 
-  return (
-    <Slide appear={false} direction="down" in={!trigger}>
-      {children}
-    </Slide>
-  );
-};
-
-const ScrollToTop = ({ window, children }: AppBarProps) => {
-  const trigger = useScrollTrigger({
-    target: window ? window() : undefined,
-    disableHysteresis: true,
-    threshold: 100,
-  });
-
-  const handleClick = (event: React.MouseEvent<HTMLDivElement>) => {
-    const anchor = (
-      (event.target as HTMLDivElement).ownerDocument || document
-    ).querySelector("#back-to-top-anchor");
-
-    if (anchor) {
-      anchor.scrollIntoView({
-        block: "center",
-      });
-    }
-  };
-
-  return (
-    <Fade in={trigger}>
-      <Box
-        onClick={handleClick}
-        role="presentation"
-        sx={{ position: "fixed", bottom: 16, right: 16 }}
-      >
-        {children}
-      </Box>
-    </Fade>
-  );
-};
-
-const ElevationScroll = ({ window, children }: AppBarProps) => {
-  const trigger = useScrollTrigger({
+  const elevationTrigger = useScrollTrigger({
     disableHysteresis: true,
     threshold: 0,
     target: window ? window() : undefined,
   });
 
-  return React.cloneElement(children, {
-    elevation: trigger ? 4 : 0,
+  const mChildren = React.cloneElement(children, {
+    elevation: elevationTrigger ? 4 : 0,
   });
+
+  return (
+    <Slide appear={false} direction="down" in={!hideOnScrollTrigger}>
+      {mChildren}
+    </Slide>
+  );
 };
 
 const Navbar = (props: NavbarProps) => {
@@ -149,9 +115,9 @@ const Navbar = (props: NavbarProps) => {
   );
 
   return (
-    <Box sx={{ display: "flex" }}>
-      <ElevationScroll {...props}>
-        <AppBar position="static" component="nav">
+    <>
+      <AppBarUtil {...props}>
+        <AppBar position="sticky" component="nav">
           <Toolbar>
             <IconButton
               color="inherit"
@@ -197,7 +163,7 @@ const Navbar = (props: NavbarProps) => {
             </Stack>
           </Toolbar>
         </AppBar>
-      </ElevationScroll>
+      </AppBarUtil>
 
       <Box component="nav">
         <Drawer
@@ -220,12 +186,7 @@ const Navbar = (props: NavbarProps) => {
           {drawer}
         </Drawer>
       </Box>
-      <ScrollToTop {...props}>
-        <Fab size="small" aria-label="scroll back to top">
-          <IconArrowUp />
-        </Fab>
-      </ScrollToTop>
-    </Box>
+    </>
   );
 };
 
