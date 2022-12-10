@@ -51,10 +51,14 @@ export const Hero = (props: HeroProps) => {
         </Typography>
         <Typography variant="h6" component="div">
           <Box fontWeight="bold" display="inline">
-            UX/UI Engineer, Software Engineer, and Product Engineer Here!{" "}
+            UX/UI Engineer, Software Engineer, Data Scientist, and Product
+            Engineer Here!{" "}
           </Box>
           Making fantastic digital products that help people is a passion of
-          mine. Currently, I'm a UX/UI engineer at{" "}
+          mine.
+        </Typography>
+        <Typography variant="h6" component="div">
+          Currently, I'm a UX/UI engineer at{" "}
           <CustomLink href="https://www.orbis.org/">
             Orbis International
           </CustomLink>
