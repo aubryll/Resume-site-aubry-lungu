@@ -1,11 +1,5 @@
-import { Hero, About } from "@components/sections";
-import {
-  Fab,
-  Fade,
-  Grid,
-  Box,
-  useScrollTrigger,
-} from "@mui/material";
+import { Hero, About, Experience } from "@components/sections";
+import { Fab, Fade, Grid, Box, useScrollTrigger } from "@mui/material";
 import { IconArrowUp } from "@tabler/icons";
 
 type HomeProps = {};
@@ -24,7 +18,7 @@ const ScrollToTop = ({ window, children }: ScrollToTopProps) => {
   const handleClick = (event: React.MouseEvent<HTMLDivElement>) => {
     const anchor = (
       (event.target as HTMLDivElement).ownerDocument || document
-    ).querySelector("#hero-content");
+    ).querySelector("#hero");
 
     if (anchor) {
       anchor.scrollIntoView({
@@ -51,8 +45,9 @@ const Home = (props: HomeProps) => {
   return (
     <>
       <Grid container spacing={4} mb={4}>
-        <Hero id="hero-content" />
-        <About id="about-content" />
+        <Hero id="hero" />
+        <About id="about" />
+        <Experience id="experience" />
       </Grid>
       <ScrollToTop {...props}>
         <Fab size="small" aria-label="scroll back to top">

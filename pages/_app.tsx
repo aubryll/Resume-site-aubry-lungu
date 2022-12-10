@@ -1,6 +1,7 @@
 import "@fontsource/ibm-plex-sans";
 import "@fontsource/dm-mono";
-import "@fontsource/secular-one";
+//import "@fontsource/secular-one";
+import "@fontsource/bungee-shade";
 import type { AppProps } from "next/app";
 import { Layout } from "@components/layout";
 import React from "react";

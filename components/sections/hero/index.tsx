@@ -49,7 +49,7 @@ export const Hero = (props: HeroProps) => {
         >
           Aubry Lungu.
         </Typography>
-        <Typography variant="h6" component="div">
+        <Typography variant="h6" component="div" color="inherit">
           <Box fontWeight="bold" display="inline">
             UX/UI Engineer, Software Engineer, Data Scientist, and Product
             Engineer Here!{" "}
@@ -57,7 +57,7 @@ export const Hero = (props: HeroProps) => {
           Making fantastic digital products that help people is a passion of
           mine.
         </Typography>
-        <Typography variant="h6" component="div">
+        <Typography variant="h6" component="div" color="inherit">
           Currently, I'm a UX/UI engineer at{" "}
           <CustomLink href="https://www.orbis.org/">
             Orbis International

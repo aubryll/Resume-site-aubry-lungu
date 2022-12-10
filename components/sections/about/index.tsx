@@ -50,15 +50,17 @@ export const About = (props: AboutProps) => {
           role="presentation"
           variant="fullWidth"
         >
-          <Typography variant="h4">About me</Typography>
+          <Typography variant="h4" color="inherit">
+            About me
+          </Typography>
         </Divider>
-        <Typography variant="h6">
+        <Typography variant="h6" color="inherit">
           Hello, my name is Aubry Lungu, and I like creating products that look
           and feel amazing. My interest was sparked in 2012, when I created a
           calculator in HTML and CSS. It wasn't much, but it lit a fire that
           began a career.
         </Typography>
-        <Typography variant="h6" component="div">
+        <Typography variant="h6" component="div" color="inherit">
           Today, I've had the privilege of working with amazing, talented people
           in the{" "}
           <CustomLink href="https://first-quantum.com/">mining</CustomLink>,{" "}
@@ -67,7 +69,7 @@ export const About = (props: AboutProps) => {
           sectors to create products that enhance people's lives and grow
           economies.
         </Typography>
-        <Typography variant="h6">
+        <Typography variant="h6" color="inherit">
           Here are some of the skills I've picked up during the course of my
           profession.
         </Typography>

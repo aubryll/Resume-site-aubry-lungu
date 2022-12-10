@@ -75,10 +75,15 @@ export const ColorModeContextProvider = ({
 
         typography: {
           fontFamily: `"IBM Plex Sans", sans-serif`,
-          h1: { fontFamily: `"Secular One", sans-serif` },
-          h2: { fontFamily: `"Secular One", sans-serif` },
-          h3: { fontFamily: `"Secular One", sans-serif` },
-          h4: { fontFamily: `"Secular One", sans-serif` },
+          h1: {
+            fontFamily: `"Bungee Shade", cursive`,
+            "@media (max-width:768px)": {
+              fontSize: "4.5rem",
+            },
+          },
+          h2: { fontFamily: `"Bungee Shade", cursive` },
+          h3: { fontFamily: `"Bungee Shade", cursive` },
+          h4: { fontFamily: `"Bungee Shade", cursive` },
           button: { textTransform: "none", fontFamily: `"DM Mono", monospace` },
         },
         components: {
