@@ -1,13 +1,13 @@
 export interface GetInfinitePagesInterface<T> {
-    nextPage?: number;
-    currentPage?: number;
-    records: T[];
-    totalCount: number;
-    pageSize: number;
-    pagesCount: number;
+  nextPage?: number;
+  currentPage?: number;
+  records: T[];
+  totalCount: number;
+  pageSize: number;
+  pagesCount: number;
 }
 
 export type APIErrorResponse = {
-    error: string;
-    error_description: string;
+  error: string;
+  error_description: string;
 };

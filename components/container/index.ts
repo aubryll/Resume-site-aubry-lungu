@@ -1,2 +1,2 @@
-export {DesktopComponent} from './Desktop'
-export {MobileComponent} from './Mobile'
+export { DesktopComponent } from "./Desktop";
+export { MobileComponent } from "./Mobile";

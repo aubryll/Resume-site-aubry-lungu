@@ -1,4 +1,4 @@
-type ContactProps = {}
-export const Contact = (props: ContactProps) =>{
-    return (<>Contact</>)
-}
+type ContactProps = {};
+export const Contact = (props: ContactProps) => {
+  return <>Contact</>;
+};

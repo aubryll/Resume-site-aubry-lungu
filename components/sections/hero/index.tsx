@@ -10,7 +10,6 @@ import {
 } from "@mui/material";
 import Image from "next/image";
 
-
 type HeroProps = {};
 
 const HeroGridItem = styled(Grid)(({ theme }) => ({
@@ -63,16 +62,16 @@ const Hero = (props: HeroProps) => {
           >
             Aubry Lungu.
           </Typography>
-          <Divider variant="fullWidth" />
-          <Typography variant="h4">
-            UI/UX Engineer | Software Engineer | Product Engineer
-          </Typography>
-          <Typography variant="h6">
-            UX/UI Engineer, Software Engineer, and Product Engineer Here! Making
-            fantastic digital products that help people is a passion of mine.
-            Currently, I'm a UX/UI engineer at{" "}
-            <CustomLink href="https://www.orbis.org/">Orbis International</CustomLink>,
-            where we use machine learning and artificial intelligence to help
+          <Typography variant="h6" component="div">
+            <Box fontWeight="bold" display="inline">
+              UX/UI Engineer, Software Engineer, and Product Engineer Here!{" "}
+            </Box>
+            Making fantastic digital products that help people is a passion of
+            mine. Currently, I'm a UX/UI engineer at{" "}
+            <CustomLink href="https://www.orbis.org/">
+              Orbis International
+            </CustomLink>
+            , where we use machine learning and artificial intelligence to help
             eliminate preventable blindness.
           </Typography>
         </Stack>

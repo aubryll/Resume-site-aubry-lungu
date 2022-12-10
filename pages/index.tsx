@@ -1,18 +1,13 @@
 import Hero from "@components/sections/hero";
-import {
-  Grid,
-  useTheme,
-} from "@mui/material";
-
+import { Grid, useTheme } from "@mui/material";
 
 type HomeProps = {};
 
-
 const Home = (props: HomeProps) => {
-  const theme = useTheme()
+  const theme = useTheme();
   return (
     <Grid container spacing={4}>
-      <Hero/>
+      <Hero />
     </Grid>
   );
 };

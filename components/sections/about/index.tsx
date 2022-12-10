@@ -1,4 +1,4 @@
-type AboutProps = {}
-export const About = (props: AboutProps) =>{
-    return (<>About</>)
-}
+type AboutProps = {};
+export const About = (props: AboutProps) => {
+  return <>About</>;
+};

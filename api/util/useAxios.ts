@@ -1,12 +1,11 @@
-import axios, {AxiosInstance} from 'axios';
+import axios, { AxiosInstance } from "axios";
 import {
   ensureUserTokenResponse,
   removeUserTokenResponse,
   setUserTokenResponse,
 } from "@util/tokens/userTokenResponse";
 import createAuthRefreshInterceptor from "axios-auth-refresh";
-import { RefreshTokenParams, UserOAuth } from '@api/types/auth';
-
+import { RefreshTokenParams, UserOAuth } from "@api/types/auth";
 
 export type DefaultRequestProps = {
   url: string;
@@ -20,8 +19,6 @@ export type MutationRequestProps<T, S> = DefaultRequestProps & {
   data?: any;
   updater?: (oldData: T, newData: S) => any;
 };
-
-
 
 //Auth axios instance
 export const authAxiosInstance = axios.create({
@@ -38,7 +35,6 @@ export const proxyAxiosInstance = axios.create({
 const axiosInstance = axios.create({
   baseURL: `${process.env.NEXT_PUBLIC_API_URI}`,
 });
-
 
 //Access token interceptor
 axiosInstance.interceptors.request.use(async (request) => {
@@ -79,14 +75,23 @@ createAuthRefreshInterceptor(axiosInstance, async (failedRequest) => {
 });
 
 export const api = {
-  get: <T>({url, params, axiosIns = axiosInstance}: QueryRequestProps) =>
-    axiosIns.get<T>(url, {params}),
-  post: <T, S>({url, data, axiosIns = axiosInstance}: MutationRequestProps<T, S>) =>
-    axiosIns.post<S>(url, data),
+  get: <T>({ url, params, axiosIns = axiosInstance }: QueryRequestProps) =>
+    axiosIns.get<T>(url, { params }),
+  post: <T, S>({
+    url,
+    data,
+    axiosIns = axiosInstance,
+  }: MutationRequestProps<T, S>) => axiosIns.post<S>(url, data),
 
-  patch: <T,S>({url, data, axiosIns = axiosInstance}: MutationRequestProps<T, S>) =>
-    axiosIns.patch<S>(url, data),
+  patch: <T, S>({
+    url,
+    data,
+    axiosIns = axiosInstance,
+  }: MutationRequestProps<T, S>) => axiosIns.patch<S>(url, data),
 
-  delete: <T, S>({url, data, axiosIns = axiosInstance}: MutationRequestProps<T, S>) =>
-    axiosIns.delete(url, data),
+  delete: <T, S>({
+    url,
+    data,
+    axiosIns = axiosInstance,
+  }: MutationRequestProps<T, S>) => axiosIns.delete(url, data),
 };
