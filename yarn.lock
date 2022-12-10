@@ -349,20 +349,10 @@
   resolved "https://registry.yarnpkg.com/@fontsource/ibm-plex-sans/-/ibm-plex-sans-4.5.13.tgz#fa0ef72a2ccf4b4329c488212f31ef4e6770983d"
   integrity sha512-7oDAqvuIArnMJck/JBqCnQZwqL4za+5xG+1Gu4enYbGcGqmUPktiuOy1i0N3XrzrNO70ZvsSt1Rdkxr2oemE6Q==
 
-"@fontsource/montserrat@^4.5.13":
-  version "4.5.13"
-  resolved "https://registry.yarnpkg.com/@fontsource/montserrat/-/montserrat-4.5.13.tgz#58f12419c05e131b09ab17e9181aa24fb9c84b3a"
-  integrity sha512-/XlcNsMFjdWX4Away8Ax/4NgND8Ckk9gVDwgz1sfxF6h+gFHChLOV0IvPrUfCQjZ1F35igg+nR9bSxmjsYEskQ==
-
-"@fontsource/plus-jakarta-sans@^4.5.10":
-  version "4.5.10"
-  resolved "https://registry.yarnpkg.com/@fontsource/plus-jakarta-sans/-/plus-jakarta-sans-4.5.10.tgz#2acd0d5f76357a4160386b09251e5fcc2f58303b"
-  integrity sha512-WWyrjO6qyL7j3itLJUEE/rHRyDfypsoIvpvI6Ld0vyEae49P613cm5UBRe5zMnPjNC7dXBQ8/fjbszbifkL6BA==
-
-"@fontsource/roboto@^4.5.8":
-  version "4.5.8"
-  resolved "https://registry.yarnpkg.com/@fontsource/roboto/-/roboto-4.5.8.tgz#56347764786079838faf43f0eeda22dd7328437f"
-  integrity sha512-CnD7zLItIzt86q4Sj3kZUiLcBk1dSk81qcqgMGaZe7SQ1P8hFNxhMl5AZthK1zrDM5m74VVhaOpuMGIL4gagaA==
+"@fontsource/secular-one@^4.5.9":
+  version "4.5.9"
+  resolved "https://registry.yarnpkg.com/@fontsource/secular-one/-/secular-one-4.5.9.tgz#029edc5ac85f28292be244092cc89db90753b980"
+  integrity sha512-bVorEbIEzGJb/o6/AgA7DSGwjUYz7Yd9im4z8D4r0Vxtimx+Kd67gW8shR/jnrVhsnSqYi1G4lpTwGRVS6tw9Q==
 
 "@humanwhocodes/config-array@^0.11.6":
   version "0.11.7"

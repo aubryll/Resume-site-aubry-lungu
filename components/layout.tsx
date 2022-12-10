@@ -1,4 +1,4 @@
-import { Container, CssBaseline, Box, GlobalStyles } from "@mui/material";
+import { Container, CssBaseline } from "@mui/material";
 import Navbar from "@components/navbar";
 
 export interface LayoutProps {

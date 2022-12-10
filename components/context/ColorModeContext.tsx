@@ -78,12 +78,10 @@ export const ColorModeContextProvider = ({children}: ColorModeContextProviderPro
 
         typography: {
             fontFamily: `"IBM Plex Sans", sans-serif`,
-            h1: { fontFamily: `"Plus Jakarta Sans", sans-serif`},
-            h2: { fontFamily: `"Plus Jakarta Sans", sans-serif`},
-            h3: { fontFamily: `"Plus Jakarta Sans", sans-serif`},
-            h4: { fontFamily: `"Plus Jakarta Sans", sans-serif`},
-            h5: { fontFamily: `"Plus Jakarta Sans", sans-serif`},
-            h6: { fontFamily: `"Plus Jakarta Sans", sans-serif`},
+            h1: { fontFamily: `"Secular One", sans-serif`},
+            h2: { fontFamily: `"Secular One", sans-serif`},
+            h3: { fontFamily: `"Secular One", sans-serif`},
+            h4: { fontFamily: `"Secular One", sans-serif`},
             button: { textTransform: "none", fontFamily: `"DM Mono", monospace`},
         },
         components: {

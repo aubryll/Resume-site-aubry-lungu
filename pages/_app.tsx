@@ -1,9 +1,6 @@
-import "../styles/globals.css";
-import "@fontsource/roboto";
 import "@fontsource/ibm-plex-sans";
-import "@fontsource/plus-jakarta-sans";
 import "@fontsource/dm-mono";
-import "@fontsource/montserrat";
+import "@fontsource/secular-one";
 import type { AppProps } from "next/app";
 import { Layout } from "@components/layout";
 import React from "react";
