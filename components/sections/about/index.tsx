@@ -12,6 +12,7 @@ import {
 } from "@mui/material";
 import { SectionItem } from "../SectionItem";
 import type { BaseSectionProps } from "../type/BaseProps";
+import { Parallax } from "react-scroll-parallax";
 
 type AboutProps = BaseSectionProps;
 
@@ -49,7 +50,7 @@ export const About = ({ id = "about", ...props }: AboutProps) => {
           role="presentation"
           variant="fullWidth"
         >
-          <Typography variant="h4" color="inherit">
+          <Typography variant="h4" color="inherit" component={Parallax} translateX={[10, -10]}>
             About me
           </Typography>
         </Divider>

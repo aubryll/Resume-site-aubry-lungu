@@ -36,6 +36,7 @@ const MugShotBox = styled(Box)(({ theme }) => ({
   },
 }));
 
+
 export const Hero = ({ id = "hero", ...props }: HeroProps) => {
   return (
     <>
@@ -47,7 +48,7 @@ export const Hero = ({ id = "hero", ...props }: HeroProps) => {
         >
           Hi, I'm
         </Typography>
-        <Typography component="div" variant="h1" color="secondary.main">
+        <Typography variant="h1" color="secondary.main" component={Parallax} translateY={[-19, 19]} >
           Aubry Lungu.
         </Typography>
         <Typography variant="inherit" color="inherit" component="div">

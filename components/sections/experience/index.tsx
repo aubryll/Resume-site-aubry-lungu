@@ -14,6 +14,7 @@ import { SectionItem } from "../SectionItem";
 import { BaseSectionProps } from "../type/BaseProps";
 import Image from "next/image";
 import { CustomLink } from "@components/CustomLink";
+import { Parallax } from "react-scroll-parallax";
 
 type ExperienceProps = BaseSectionProps;
 
@@ -147,7 +148,7 @@ export const Experience = ({
           role="presentation"
           variant="fullWidth"
         >
-          <Typography variant="h4">Experience</Typography>
+          <Typography variant="h4" component={Parallax} translateX={[-10, 10]}>Experience</Typography>
         </Divider>
         <List>{workExperience.map(createItem)}</List>
       </SectionItem>
