@@ -39,11 +39,10 @@ const skills = [
   "Data analysis",
 ];
 
-export const About = (props: AboutProps) => {
-  const theme = useTheme();
+export const About = ({ id = "about", ...props }: AboutProps) => {
   return (
     <>
-      <SectionItem item md={8} xs={12} {...props}>
+      <SectionItem item md={8} xs={12} {...props} id={id}>
         <Divider
           component="div"
           textAlign="left"
@@ -54,13 +53,13 @@ export const About = (props: AboutProps) => {
             About me
           </Typography>
         </Divider>
-        <Typography variant="h6" color="inherit">
+        <Typography variant="inherit" color="inherit">
           Hello, my name is Aubry Lungu, and I like creating products that look
           and feel amazing. My interest was sparked in 2012, when I created a
           calculator in HTML and CSS. It wasn't much, but it lit a fire that
           began a career.
         </Typography>
-        <Typography variant="h6" component="div" color="inherit">
+        <Typography component="div" variant="inherit" color="inherit">
           Today, I've had the privilege of working with amazing, talented people
           in the{" "}
           <CustomLink href="https://first-quantum.com/">mining</CustomLink>,{" "}
@@ -69,18 +68,22 @@ export const About = (props: AboutProps) => {
           sectors to create products that enhance people's lives and grow
           economies.
         </Typography>
-        <Typography variant="h6" color="inherit">
+        <Typography variant="inherit" color="inherit">
           Here are some of the skills I've picked up during the course of my
           profession.
         </Typography>
         <SkillList>
           {skills.map((skill, idx) => (
             <ListItem disableGutters key={idx}>
-              <Typography component="div" fontFamily={`"DM Mono", monospace`}>
+              <Typography
+                component="div"
+                variant="inherit" color="inherit"
+                fontFamily={`"DM Mono", monospace`}
+              >
                 <Box
                   fontWeight="bold"
                   display="inline"
-                  color={theme.palette.secondary.main}
+                  color="secondary.main"
                 >
                   {`${++idx}. `}
                 </Box>

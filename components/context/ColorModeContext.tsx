@@ -1,7 +1,6 @@
 import React from "react";
 import type { ThemeOptions } from "@mui/material/styles";
-import { createTheme, ThemeProvider } from "@mui/material";
-import { color } from "@mui/system";
+import { createTheme, responsiveFontSizes, ThemeProvider } from "@mui/material";
 
 const colors = {
   navy: "#0a192f",
@@ -25,7 +24,7 @@ type ColorModeContextProviderProps = {
 
 export const ColorModeContext = React.createContext<IColorModeContext>({
   toggleColorMode: () => {},
-  mode: "light",
+  mode: "dark",
 });
 
 export const componentsOverride: ThemeOptions["components"] = {
@@ -36,12 +35,19 @@ export const componentsOverride: ThemeOptions["components"] = {
       },
     },
   },
+  MuiButton: {
+    styleOverrides: {
+      outlined: {
+        color: colors.green,
+      },
+    },
+  },
 };
 
 export const ColorModeContextProvider = ({
   children,
 }: ColorModeContextProviderProps) => {
-  const [mode, setMode] = React.useState<"light" | "dark">("light");
+  const [mode, setMode] = React.useState<"light" | "dark">("dark");
   const colorMode = React.useMemo(
     () => ({
       toggleColorMode: () => {
@@ -59,6 +65,7 @@ export const ColorModeContextProvider = ({
           mode,
           background: {
             default: colors.navy,
+            paper: colors.navy,
           },
           primary: {
             main: colors.navy,
@@ -75,12 +82,7 @@ export const ColorModeContextProvider = ({
 
         typography: {
           fontFamily: `"IBM Plex Sans", sans-serif`,
-          h1: {
-            fontFamily: `"Bungee Shade", cursive`,
-            "@media (max-width:768px)": {
-              fontSize: "4.5rem",
-            },
-          },
+          h1: { fontFamily: `"Bungee Shade", cursive` },
           h2: { fontFamily: `"Bungee Shade", cursive` },
           h3: { fontFamily: `"Bungee Shade", cursive` },
           h4: { fontFamily: `"Bungee Shade", cursive` },
@@ -93,9 +95,10 @@ export const ColorModeContextProvider = ({
     [mode]
   );
 
+  const responsiveFontTheme = responsiveFontSizes(theme);
   return (
     <ColorModeContext.Provider value={colorMode}>
-      <ThemeProvider theme={theme}>{children}</ThemeProvider>
+      <ThemeProvider theme={responsiveFontTheme}>{children}</ThemeProvider>
     </ColorModeContext.Provider>
   );
 };

@@ -1,5 +1,6 @@
 import {
   Box,
+  Card,
   Divider,
   List,
   ListItem,
@@ -133,10 +134,13 @@ const workExperience: Experience[] = [
   },
 ];
 
-export const Experience = (props: ExperienceProps) => {
+export const Experience = ({
+  id = "experience",
+  ...props
+}: ExperienceProps) => {
   return (
     <>
-      <SectionItem item md={8} xs={12} {...props}>
+      <SectionItem item md={8} xs={12} {...props} id={id}>
         <Divider
           component="div"
           textAlign="left"
@@ -158,6 +162,8 @@ const createItem = (
   return (
     <ListItem
       key={index}
+      component={Card}
+      elevation={10}
       alignItems="flex-start"
       sx={{ my: 4 }}
       color="inherit"
@@ -192,7 +198,12 @@ const createItem = (
       <ListItemText
         color="inherit"
         primary={
-          <Typography variant="h6" component="div" color="inherit">
+          <Typography
+            variant="h6"
+            component="div"
+            fontWeight="bold"
+            color="inherit"
+          >
             {`${role} `}
             <Box color={"secondary.main"} display="inline">
               <CustomLink href={link}>{`@ ${name}`}</CustomLink>
@@ -205,7 +216,8 @@ const createItem = (
             <Typography
               fontFamily={`"DM Mono", monospace`}
               component="span"
-              color="text.primary"
+              variant="inherit"
+              color="inherit"
             >
               {`${from} - ${to} in ${location}`}
             </Typography>
@@ -217,8 +229,8 @@ const createItem = (
                   <ListItem disableGutters key={idx} component={"span"}>
                     <Typography
                       component="span"
-                      color="text.primary"
-                      variant="h6"
+                      color="inherit"
+                      variant="inherit"
                     >
                       <Box
                         fontWeight="bold"
