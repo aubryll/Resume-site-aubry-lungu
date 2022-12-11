@@ -1,20 +1,29 @@
+import * as React from "react";
 import {
   Box,
   Card,
   Divider,
+  Grid,
   List,
   ListItem,
   ListItemIcon,
   ListItemText,
+  Stack,
   styled,
+  Tab,
+  tabClasses,
+  Tabs,
   Typography,
+  useMediaQuery,
+  useTheme,
 } from "@mui/material";
-import React from "react";
 import { SectionItem } from "../SectionItem";
 import { BaseSectionProps } from "../type/BaseProps";
 import Image from "next/image";
 import { CustomLink } from "@components/CustomLink";
 import { Parallax } from "react-scroll-parallax";
+import workExperience from "@api/data/experience.json";
+import useWindowDimensions from "@util/useDimensions";
 
 type ExperienceProps = BaseSectionProps;
 
@@ -29,116 +38,46 @@ type Experience = {
   name: string;
 };
 
-const workExperience: Experience[] = [
-  {
-    logo: "/logos/orbis-logo.svg",
-    link: "https://www.orbis.org/en",
-    location: "New York, USA",
-    name: "Orbis International",
-    role: "UI/UX Engineer",
-    from: "01/2022",
-    to: "Current",
-    duties: [
-      "Designed and executed the user interface and user experience for Cybersight, a telemedicine system utilized in over 200 countries and accessible in seven languages.",
-      "Adobe InDesign, Figma, and Adobe Illustrator were used to create client page layouts.",
-      "Complete web applications were redesigned and installed to satisfy web and industry standards.",
-    ],
-  },
-  {
-    logo: "/logos/ema-logo.svg",
-    link: "https://openenergylabs.co/",
-    location: "London, UK",
-    name: "Open Energy Labs",
-    role: "Senior Software Engineer - Consultant",
-    from: "02/2021",
-    to: "06/2022",
-    duties: [
-      "Designed the UI/UX and functionality for the Energy Makers Academy Android app, which is now available on the Play Store.",
-      "Participated in the agile development of products within cross-functional frameworks.",
-      "Set idiomatic syntax and design patterns for technical developers.",
-      "Conducted research on the subtle characteristics of various platforms in order to guide the team in the creation of apps for iPhone, Android, Windows, and OSX devices.",
-    ],
-  },
-  {
-    logo: "/logos/FirstQuantum-logo.svg",
-    link: "https://first-quantum.com/",
-    location: "Solwezi, ZM",
-    name: "First Quantum Minerals Limited",
-    role: "Product Developer",
-    from: "03/2020",
-    to: "03/2021",
-    duties: [
-      "Spearheaded product development from initial design conceptualization to manufacturing and final delivery to clients.",
-      "Facilitated quality assurance and product assessments to promote high-quality productions.",
-      "Researched modern product trends and adapted designs to match.",
-      "Prepared sketches and detailed drawings of designs and projected product ideas.",
-    ],
-  },
-  {
-    logo: "/logos/mika-express-logo.png",
-    link: "https://www.facebook.com/people/MikaExpress/100052002867101/",
-    location: "Lusaka, ZM",
-    name: "MikaExpress Limited",
-    role: "Senior FullStack Software Engineer",
-    from: "01/2019",
-    to: "03/2020",
-    duties: [
-      "Before going live, I tested the software to eliminate bugs and resolve issues.",
-      "Developed user-friendly software interfaces to ease overall administration.",
-      "Existing software systems were modified to improve performance and add new features.",
-      "Mentored junior development professionals to help them improve their coding standards.",
-    ],
-  },
-  {
-    logo: "/logos/ab-bank-logo.jpg",
-    link: "https://www.abbank.co.zm/",
-    location: "Lusaka, ZM",
-    name: "AB Bank Zambia",
-    role: "Project Manager - Consultant",
-    from: "08/2018",
-    to: "08/2019",
-    duties: [
-      "Developed project plans that included objectives, resources needed, and timelines.",
-      "Project staff work was coordinated, including task assignment and performance monitoring.",
-      "Delivered projects on schedule, under budget, and with high quality standards.",
-      "By offering excellent program leadership, I was able to enhance development and drive continuous improvement in the project delivery process.",
-    ],
-  },
-  {
-    logo: "/logos/crystaline-technologies-logo.png",
-    link: "http://www.crystaline.co.zm/about-us.html",
-    location: "Lusaka, ZM",
-    name: "Crystaline Technologies Limited",
-    role: "Software Engineer",
-    from: "07/2017",
-    to: "12/2017",
-    duties: [
-      "Scrum and Kanban approaches were streamlined into the development processes to standardize and speed operations.",
-      "Integrated cutting-edge development approaches to reduce turnaround times and increase client loyalty.",
-      "JUnit, Jasmine, and Selenium were used to automate diagnostic testing of produced applications.",
-    ],
-  },
-  {
-    logo: "/logos/wesbr-foundation-logo.png",
-    link: "https://www.facebook.com/WesbrFoundationZambia/",
-    location: "Lusaka, ZM",
-    name: "Wesbr Foundation",
-    role: "System Analyst - Volunteer",
-    from: "11/2017",
-    to: "08/2018",
-    duties: [
-      "Developed and monitored project plans while providing management with progress reports.",
-      "Designed a simplified task system to allow more efficient workflows for both peers and management personnel.",
-      "When directing project teams, I maintained quality-focused performance benchmarks and schedules.",
-      "Investigated new technologies and tools for productivity, security, and quality assurance.",
-    ],
-  },
-];
+interface TabPanelProps {
+  children?: React.ReactNode;
+  index: number;
+  value: number;
+}
 
-export const Experience = ({
+const TabPanel = (props: TabPanelProps) => {
+  const { children, value, index, ...other } = props;
+  return (
+    <div
+      role="tabpanel"
+      hidden={value !== index}
+      id={`tabpanel-${index}`}
+      aria-labelledby={`tab-${index}`}
+      {...other}
+    >
+      {value === index && children}
+    </div>
+  );
+};
+
+const Experience = ({
   id = "experience",
   ...props
 }: ExperienceProps) => {
+  const [selectedTab, setSelectedTab] = React.useState(0);
+  const [hasMounted, setHasMounted] = React.useState(false);
+  const {width} = useWindowDimensions()
+  const theme = useTheme();
+  const smMediaQuery = useMediaQuery(theme.breakpoints.up("sm"));
+
+  React.useEffect(() => {
+    setHasMounted(true);
+  }, []);
+
+  if (!hasMounted && !width) return <></>
+
+  const handleTabChange = (event: React.SyntheticEvent, newValue: number) => {
+    setSelectedTab(newValue);
+  };
   return (
     <>
       <SectionItem item md={8} xs={12} {...props} id={id}>
@@ -148,9 +87,68 @@ export const Experience = ({
           role="presentation"
           variant="fullWidth"
         >
-          <Typography variant="h4" component={Parallax} translateX={[-10, 10]}>Experience</Typography>
+          <Typography variant="h4" component={Parallax} translateX={[-10, 10]}>
+            Experience
+          </Typography>
         </Divider>
-        <List>{workExperience.map(createItem)}</List>
+        <Grid
+          {...(smMediaQuery && {
+            container: true,
+            spacing: 4,
+          })}
+        >
+          <Grid item sm={12} md={3}>
+            <Box
+              sx={{
+                maxWidth: {
+                  //Fix for unresponsive/overflowing MUI tabs on mobile
+                  xs: (width ? width * .9 : 320),
+                  sm: (width ? width * .9 : 480),
+                  md: "100%",
+                },
+                "@media (max-width:768px)": {
+                  mb: 4
+                },
+              }}
+            >
+              <Tabs
+                value={selectedTab}
+                onChange={handleTabChange}
+                orientation={smMediaQuery ? "vertical" : "horizontal"}
+                variant="scrollable"
+                allowScrollButtonsMobile
+                textColor="inherit"
+                indicatorColor="secondary"
+                scrollButtons="auto"
+                sx={{
+                  ...(smMediaQuery && {
+                    borderLeft: 1,
+                    borderColor: "inherit",
+                    [`& .MuiTabs-indicator`]: {
+                      left: "0px",
+                    },
+                  }),
+                }}
+              >
+                {workExperience.map(({ name }, idx) => (
+                  <Tab
+                    key={idx}
+                    label={name}
+                    id={`vertical-tab-${idx}`}
+                    sx={smMediaQuery ? { alignItems: "flex-start" } : null}
+                  />
+                ))}
+              </Tabs>
+            </Box>
+          </Grid>
+          <Grid item sm={12} md={9}>
+            {workExperience.map((item, idx) => (
+              <TabPanel key={idx} value={selectedTab} index={idx}>
+                {createItem(item, idx)}
+              </TabPanel>
+            ))}
+          </Grid>
+        </Grid>
       </SectionItem>
     </>
   );
@@ -161,46 +159,38 @@ const createItem = (
   index: number
 ) => {
   return (
-    <ListItem
-      key={index}
-      component={Card}
-      elevation={10}
-      alignItems="flex-start"
-      sx={{ my: 4,}}
-      color="inherit"
-    >
-      <ListItemIcon
-        sx={{
-          height: 100,
-          width: 100,
-          background: "white",
-          borderRadius: 1,
-          margin: 4,
-          alignItems: "center",
-          justifyContent: "center",
-          "@media (max-width:768px)": {
-            display: "none",
-          },
-        }}
-      >
-        <Image
-          src={logo}
-          height={100}
-          width={100}
-          alt={`${name}-logo`}
-          priority={true}
-          style={{
-            objectFit: "scale-down",
-            borderRadius: 5,
-            aspectRatio: 1,
+    <Stack key={index} alignItems="flex-start" color="inherit">
+      <Stack direction="row" alignItems="center">
+        <Box
+          sx={{
+            height: 80,
+            width: 80,
+            background: "white",
+            borderRadius: 1,
+            marginRight: 4,
+            alignItems: "center",
+            justifyContent: "center",
+            "@media (max-width:768px)": {
+              display: "none",
+            },
           }}
-        />
-      </ListItemIcon>
-      <ListItemText
-        color="inherit"
-        primary={
+        >
+          <Image
+            src={logo}
+            height={80}
+            width={80}
+            alt={`${name}-logo`}
+            priority={true}
+            style={{
+              objectFit: "scale-down",
+              borderRadius: 5,
+              aspectRatio: 1,
+            }}
+          />
+        </Box>
+        <Stack>
           <Typography
-            variant="h6"
+            variant="subtitle1"
             component="div"
             fontWeight="bold"
             color="inherit"
@@ -211,42 +201,36 @@ const createItem = (
               <CustomLink href={link}>{`@ ${name}`}</CustomLink>
             </Box>
           </Typography>
-        }
-        secondary={
-          <>
-            <Typography
-              fontFamily={`"DM Mono", monospace`}
-              component="span"
-              variant="inherit"
-              color="inherit"
-            >
-              {`${from} - ${to} in ${location}`}
+
+          <Typography
+            fontFamily={`"DM Mono", monospace`}
+            variant="inherit"
+            color="inherit"
+          >
+            {`${from} - ${to} in ${location}`}
+          </Typography>
+        </Stack>
+      </Stack>
+      <List>
+        {duties.map((duty, idx) => (
+          <ListItem disableGutters key={idx}>
+            <Typography color="inherit" variant="inherit">
+              <Box
+                fontWeight="bold"
+                component="span"
+                display="inline"
+                color="secondary.main"
+              >
+                {`${++idx}. `}
+              </Box>
+              {duty}
             </Typography>
-              <List component={"span"}>
-                {duties.map((duty, idx) => (
-                  <ListItem disableGutters key={idx} component={"span"} disablePadding>
-                    <Typography
-                      component="span"
-                      color="inherit"
-                      variant="inherit"
-                    >
-                      <Box
-                        fontWeight="bold"
-                        component="span"
-                        display="inline"
-                        color="secondary.main"
-                      >
-                        {`${++idx}. `}
-                      </Box>
-                      {duty}
-                    </Typography>
-                  </ListItem>
-                ))}
-              </List>
-         
-          </>
-        }
-      />
-    </ListItem>
+          </ListItem>
+        ))}
+      </List>
+    </Stack>
   );
 };
+
+
+export default Experience
