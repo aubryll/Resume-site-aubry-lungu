@@ -23,7 +23,7 @@ import Image from "next/image";
 import { CustomLink } from "@components/CustomLink";
 import { Parallax } from "react-scroll-parallax";
 import workExperience from "@api/data/experience.json";
-import useWindowDimensions from "@util/useDimensions";
+import useWindowDimensions from "@util/hooks/useDimensions";
 
 type ExperienceProps = BaseSectionProps;
 
