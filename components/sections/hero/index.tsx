@@ -12,6 +12,7 @@ import Image from "next/image";
 import React from "react";
 import { SectionGridItem, SectionItem } from "../SectionItem";
 import type { BaseSectionProps } from "../type/BaseProps";
+import { Parallax } from "react-scroll-parallax";
 
 type HeroProps = BaseSectionProps;
 
@@ -23,33 +24,33 @@ const MugShotBox = styled(Box)(({ theme }) => ({
   justifyContent: "center",
   [theme.breakpoints.up("md")]: {
     margin: "50px auto 0",
-    width: "70%",
+    width: "80%",
+    alignSelf: "end",
   },
   "> div": {
     display: "block",
     width: "100%",
     borderRadius: 5,
     position: "relative",
-    height: "70%",
+    height: "100%",
   },
 }));
 
 export const Hero = ({ id = "hero", ...props }: HeroProps) => {
-  const theme = useTheme();
   return (
     <>
       <SectionItem item xs={12} md={8} {...props} id={id}>
-        <Typography variant="inherit" color="inherit" fontFamily={`"DM Mono", monospace`}>
+        <Typography
+          variant="inherit"
+          color="inherit"
+          fontFamily={`"DM Mono", monospace`}
+        >
           Hi, I'm
         </Typography>
-        <Typography
-          component="div"
-          variant="h1"
-          color="secondary.main"
-        >
+        <Typography component="div" variant="h1" color="secondary.main">
           Aubry Lungu.
         </Typography>
-        <Typography variant="inherit" color="inherit" component="div" >
+        <Typography variant="inherit" color="inherit" component="div">
           <Box fontWeight="bold" display="inline">
             UX/UI Engineer, Software Engineer, Data Scientist, and Product
             Engineer Here!{" "}
@@ -67,7 +68,7 @@ export const Hero = ({ id = "hero", ...props }: HeroProps) => {
         </Typography>
       </SectionItem>
       <SectionGridItem item xs={12} md={4}>
-        <MugShotBox>
+        <MugShotBox component={Parallax} speed={95}>
           <div>
             <Image
               alt={"head-shot"}
@@ -77,7 +78,7 @@ export const Hero = ({ id = "hero", ...props }: HeroProps) => {
               sizes="(max-width: 768px) 100vw,
             (max-width: 1200px) 50vw,
             33vw"
-              quality={95}
+              quality={80}
               style={{
                 objectFit: "cover",
                 borderRadius: 5,

@@ -9,11 +9,13 @@ import React from "react";
 import Head from "next/head";
 import { ColorModeContextProvider } from "@components/context/ColorModeContext";
 import { StyledEngineProvider } from "@mui/material";
+import {ParallaxProvider} from "react-scroll-parallax"
 
 export default function MyApp({ Component, pageProps }: AppProps) {
   return (
     <StyledEngineProvider injectFirst>
       <ColorModeContextProvider>
+      <ParallaxProvider>
         <React.Fragment>
           <Head>
             <meta
@@ -25,6 +27,7 @@ export default function MyApp({ Component, pageProps }: AppProps) {
             <Component {...pageProps} />
           </Layout>
         </React.Fragment>
+        </ParallaxProvider>
       </ColorModeContextProvider>
     </StyledEngineProvider>
   );

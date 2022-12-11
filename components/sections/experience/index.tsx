@@ -165,7 +165,7 @@ const createItem = (
       component={Card}
       elevation={10}
       alignItems="flex-start"
-      sx={{ my: 4 }}
+      sx={{ my: 4,}}
       color="inherit"
     >
       <ListItemIcon
@@ -203,6 +203,7 @@ const createItem = (
             component="div"
             fontWeight="bold"
             color="inherit"
+            mb={1}
           >
             {`${role} `}
             <Box color={"secondary.main"} display="inline">
@@ -212,7 +213,6 @@ const createItem = (
         }
         secondary={
           <>
-            <br />
             <Typography
               fontFamily={`"DM Mono", monospace`}
               component="span"
@@ -221,12 +221,9 @@ const createItem = (
             >
               {`${from} - ${to} in ${location}`}
             </Typography>
-            <br />
-            <br />
-            <>
               <List component={"span"}>
                 {duties.map((duty, idx) => (
-                  <ListItem disableGutters key={idx} component={"span"}>
+                  <ListItem disableGutters key={idx} component={"span"} disablePadding>
                     <Typography
                       component="span"
                       color="inherit"
@@ -245,7 +242,7 @@ const createItem = (
                   </ListItem>
                 ))}
               </List>
-            </>
+         
           </>
         }
       />

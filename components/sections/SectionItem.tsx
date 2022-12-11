@@ -13,7 +13,6 @@ type SectionItemProps = React.ComponentProps<typeof Grid>;
 export const SectionGridItem = styled(Grid)(({ theme }) => ({
   display: "flex",
   alignItems: "center",
-  //justifyContent: "center",
   [theme.breakpoints.down("md")]: {
     marginTop: theme.spacing(10),
   },
