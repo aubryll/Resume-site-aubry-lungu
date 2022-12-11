@@ -1,5 +1,4 @@
 import * as React from "react";
-import Link from "next/link";
 import {
   Button,
   Divider,
@@ -28,6 +27,8 @@ import {
 } from "@tabler/icons";
 import { navLinks } from "@util/config";
 import { useColorMode } from "@components/context/ColorModeContext";
+import Link from "next/link";
+
 
 type NavbarProps = {
   window?: () => Window;
@@ -85,13 +86,11 @@ const Navbar = (props: NavbarProps) => {
       <Divider />
       <List>
         {navLinks.map(({ name, url }, idx) => (
-          <Link key={idx} href={url}>
-            <ListItem disablePadding>
-              <ListItemButton sx={{ textAlign: "center" }}>
-                <ListItemText primary={name} />
-              </ListItemButton>
-            </ListItem>
-          </Link>
+          <ListItem key={idx} disablePadding>
+            <ListItemButton sx={{ textAlign: "center" }} LinkComponent={Link} href={url}>
+              <ListItemText primary={name} />
+            </ListItemButton>
+          </ListItem>
         ))}
         <ListItem disablePadding>
           <ListItemButton sx={{ textAlign: "center" }}>
