@@ -29,7 +29,6 @@ import { navLinks } from "@util/config";
 import { useColorMode } from "@components/context/ColorModeContext";
 import Link from "next/link";
 
-
 type NavbarProps = {
   window?: () => Window;
 };
@@ -87,7 +86,11 @@ const Navbar = (props: NavbarProps) => {
       <List>
         {navLinks.map(({ name, url }, idx) => (
           <ListItem key={idx} disablePadding>
-            <ListItemButton sx={{ textAlign: "center" }} LinkComponent={Link} href={url}>
+            <ListItemButton
+              sx={{ textAlign: "center" }}
+              LinkComponent={Link}
+              href={url}
+            >
               <ListItemText primary={name} />
             </ListItemButton>
           </ListItem>

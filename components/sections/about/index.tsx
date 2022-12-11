@@ -50,7 +50,12 @@ export const About = ({ id = "about", ...props }: AboutProps) => {
           role="presentation"
           variant="fullWidth"
         >
-          <Typography variant="h4" color="inherit" component={Parallax} translateX={[10, -10]}>
+          <Typography
+            variant="h4"
+            color="inherit"
+            component={Parallax}
+            translateX={[10, -10]}
+          >
             About me
           </Typography>
         </Divider>
@@ -78,14 +83,11 @@ export const About = ({ id = "about", ...props }: AboutProps) => {
             <ListItem disableGutters key={idx}>
               <Typography
                 component="div"
-                variant="inherit" color="inherit"
+                variant="inherit"
+                color="inherit"
                 fontFamily={`"DM Mono", monospace`}
               >
-                <Box
-                  fontWeight="bold"
-                  display="inline"
-                  color="secondary.main"
-                >
+                <Box fontWeight="bold" display="inline" color="secondary.main">
                   {`${++idx}. `}
                 </Box>
                 {skill}

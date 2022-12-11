@@ -36,7 +36,6 @@ const MugShotBox = styled(Box)(({ theme }) => ({
   },
 }));
 
-
 export const Hero = ({ id = "hero", ...props }: HeroProps) => {
   return (
     <>
@@ -48,7 +47,12 @@ export const Hero = ({ id = "hero", ...props }: HeroProps) => {
         >
           Hi, I'm
         </Typography>
-        <Typography variant="h1" color="secondary.main" component={Parallax} translateY={[-19, 19]} >
+        <Typography
+          variant="h1"
+          color="secondary.main"
+          component={Parallax}
+          translateY={[-19, 19]}
+        >
           Aubry Lungu.
         </Typography>
         <Typography variant="inherit" color="inherit" component="div">
@@ -69,7 +73,7 @@ export const Hero = ({ id = "hero", ...props }: HeroProps) => {
         </Typography>
       </SectionItem>
       <SectionGridItem item xs={12} md={4}>
-        <MugShotBox component={Parallax} speed={95}>
+        <MugShotBox component={Parallax} speed={95} rotate={[-30, 20]}>
           <div>
             <Image
               alt={"head-shot"}

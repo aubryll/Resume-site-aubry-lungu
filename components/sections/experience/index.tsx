@@ -59,13 +59,10 @@ const TabPanel = (props: TabPanelProps) => {
   );
 };
 
-const Experience = ({
-  id = "experience",
-  ...props
-}: ExperienceProps) => {
+const Experience = ({ id = "experience", ...props }: ExperienceProps) => {
   const [selectedTab, setSelectedTab] = React.useState(0);
   const [hasMounted, setHasMounted] = React.useState(false);
-  const {width} = useWindowDimensions()
+  const { width } = useWindowDimensions();
   const theme = useTheme();
   const smMediaQuery = useMediaQuery(theme.breakpoints.up("sm"));
 
@@ -73,7 +70,7 @@ const Experience = ({
     setHasMounted(true);
   }, []);
 
-  if (!hasMounted && !width) return <></>
+  if (!hasMounted && !width) return <></>;
 
   const handleTabChange = (event: React.SyntheticEvent, newValue: number) => {
     setSelectedTab(newValue);
@@ -102,12 +99,12 @@ const Experience = ({
               sx={{
                 maxWidth: {
                   //Fix for unresponsive/overflowing MUI tabs on mobile
-                  xs: (width ? width * .9 : 320),
-                  sm: (width ? width * .9 : 480),
+                  xs: width ? width * 0.9 : 320,
+                  sm: width ? width * 0.9 : 480,
                   md: "100%",
                 },
                 "@media (max-width:768px)": {
-                  mb: 4
+                  mb: 4,
                 },
               }}
             >
@@ -232,5 +229,4 @@ const createItem = (
   );
 };
 
-
-export default Experience
+export default Experience;
