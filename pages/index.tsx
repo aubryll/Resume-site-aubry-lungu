@@ -4,7 +4,7 @@ import { Fab, Fade, Grid, Box, useScrollTrigger } from "@mui/material";
 import { IconArrowUp } from "@tabler/icons";
 import dynamic from "next/dynamic";
 import { motion } from "framer-motion";
-import useMousePosition from "@util/useMousePosition";
+import useMousePosition from "@util/hooks/useMousePosition";
 
 /**
  * Because we are relying on the useWindowDimensions hook to fix
