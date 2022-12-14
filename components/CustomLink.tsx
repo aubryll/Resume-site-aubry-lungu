@@ -16,7 +16,7 @@ const CusLink = ({ children, passHref, ...others }: CustomLinkProps) => {
       passHref={passHref}
       {...others}
       style={{
-        color: theme.palette.secondary.main,
+        color: theme.palette.secondary.light,
       }}
     >
       {firstChild}

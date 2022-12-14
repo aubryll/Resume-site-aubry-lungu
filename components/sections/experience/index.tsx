@@ -1,23 +1,17 @@
 import * as React from "react";
 import {
   Box,
-  Card,
   Divider,
   Grid,
   List,
   ListItem,
-  ListItemIcon,
-  ListItemText,
   Stack,
-  styled,
   Tab,
-  tabClasses,
   Tabs,
   Typography,
   useMediaQuery,
   useTheme,
   Paper,
-  Fade,
 } from "@mui/material";
 import { SectionItem } from "../SectionItem";
 import { BaseSectionProps } from "../type/BaseProps";
@@ -47,18 +41,19 @@ interface TabPanelProps {
   value: number;
 }
 
+
 const TabPanel = (props: TabPanelProps) => {
   const { children, value, index, ...other } = props;
   return (
-      <div
-        role="tabpanel"
-        hidden={value !== index}
-        id={`tabpanel-${index}`}
-        aria-labelledby={`tab-${index}`}
-        {...other}
-      >
-        {value === index && children}
-      </div>
+    <div
+      role="tabpanel"
+      hidden={value !== index}
+      id={`tabpanel-${index}`}
+      aria-labelledby={`tab-${index}`}
+      {...other}
+    >
+      {value === index && children}
+    </div>
   );
 };
 
@@ -95,7 +90,6 @@ const Experience = ({ id = "experience", ...props }: ExperienceProps) => {
           component={Paper}
           variant="outlined"
           p={3}
-          //sx={{ background: colors.lightPaper }}
           {...(smMediaQuery && {
             container: true,
             rowSpacing: 4,
@@ -121,10 +115,9 @@ const Experience = ({ id = "experience", ...props }: ExperienceProps) => {
                 orientation={smMediaQuery ? "vertical" : "horizontal"}
                 variant="scrollable"
                 allowScrollButtonsMobile
-                textColor="inherit"
                 indicatorColor="secondary"
                 scrollButtons="auto"
-                TabIndicatorProps={{color: 'blue'}}
+                TabIndicatorProps={{ color: "blue" }}
                 sx={{
                   ...(smMediaQuery && {
                     //borderLeft: 1,
@@ -198,7 +191,7 @@ const createItem = (
             mb={1}
           >
             {`${role} `}
-            <Box color={"secondary.main"} display="inline">
+            <Box color={"secondary.light"} display="inline">
               <CustomLink href={link}>{`@ ${name}`}</CustomLink>
             </Box>
           </Typography>
@@ -216,7 +209,7 @@ const createItem = (
                 fontWeight="bold"
                 component="span"
                 display="inline"
-                color="secondary.main"
+                color="secondary.light"
               >
                 {`\u25CF `}
               </Box>

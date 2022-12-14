@@ -7,29 +7,31 @@ import {
   ListItem,
   ListItemButton,
   ListItemText,
-  Typography,
   Drawer,
   Box,
   AppBar as MuiAppBar,
   Toolbar,
   Stack,
-  useTheme,
   useScrollTrigger,
   Slide,
-  Fade,
-  Fab,
   Container,
   styled,
+  useMediaQuery,
+  useTheme
 } from "@mui/material";
 import {
-  IconArrowUp,
+  IconBrandFacebook,
+  IconBrandGithub,
+  IconBrandLinkedin,
   IconBrightness2,
   IconBrightnessHalf,
+  IconMail,
   IconMenu,
 } from "@tabler/icons";
 import { navLinks } from "@util/config";
 import { useColorMode } from "@components/theme/ColorModeContext";
 import Link from "next/link";
+import Image from "next/image";
 
 type NavbarProps = {
   window?: () => Window;
@@ -72,64 +74,73 @@ const AppBarUtil = ({ window, children }: AppBarProps) => {
 
 const Navbar = (props: NavbarProps) => {
   const { window } = props;
+  const theme = useTheme();
+  const smMediaQuery = useMediaQuery(theme.breakpoints.up("sm"));
   const [mobileOpen, setMobileOpen] = React.useState(false);
   const handleDrawerToggle = () => setMobileOpen(!mobileOpen);
   const container =
     window !== undefined ? () => window().document.body : undefined;
   const { toggleColorMode, mode } = useColorMode();
-  const theme = useTheme();
 
-  const drawer = (
-    <Box
+  const drawerContent = (
+    <Stack
       onClick={handleDrawerToggle}
+      p={4}
+      direction="column"
       sx={{
-        textAlign: "center",
-        background: theme.palette.background.default,
-        height: "100%",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        height: "100vh",
+        background: (theme) => theme.palette.background.default,
       }}
     >
-      <Typography variant="h6" sx={{ my: 2 }}>
-        Aubry Lungu
-      </Typography>
-      <Divider />
+      <Box flexGrow={1} />
       <List>
         {navLinks.map(({ name, url }, idx) => (
-          <ListItem key={idx} disablePadding>
+          <ListItem key={idx}>
             <ListItemButton
-              sx={{ textAlign: "center" }}
               LinkComponent={Link}
               href={url}
             >
-              <ListItemText primary={name} />
+              <ListItemText
+                primary={name}
+                primaryTypographyProps={{
+                  fontWeight: "bold",
+                }}
+              />
             </ListItemButton>
           </ListItem>
         ))}
-        <ListItem disablePadding>
-          <ListItemButton sx={{ textAlign: "center" }}>
-            <ListItemText primary={"Resume"} />
-          </ListItemButton>
-        </ListItem>
-
-        <ListItem disablePadding>
-          <ListItemButton
-            sx={{ textAlign: "center" }}
-            onClick={toggleColorMode}
-          >
-            <ListItemText
-              primary={mode === "light" ? "Light mode" : "Dark mode"}
-            />
-            {mode === "light" ? <IconBrightness2 /> : <IconBrightnessHalf />}
-          </ListItemButton>
-        </ListItem>
       </List>
-    </Box>
+      <Box flexGrow={1} />
+      <Divider variant="fullWidth" flexItem />
+      <Stack direction="row" m={4}>
+        <IconButton>
+          <IconBrandGithub />
+        </IconButton>
+        <IconButton>
+          <IconBrandLinkedin />
+        </IconButton>
+        <IconButton>
+          <IconBrandFacebook />
+        </IconButton>
+        <IconButton>
+          <IconMail />
+        </IconButton>
+      </Stack>
+    </Stack>
   );
 
   return (
     <>
       <AppBarUtil {...props}>
-        <AppBar position="sticky" component="nav" elevation={0}>
-          <Container maxWidth="lg">
+        <AppBar
+          position="sticky"
+          elevation={0}
+          sx={{ zIndex: (theme) => theme.zIndex.drawer + 1 }}
+        >
+          <Container maxWidth="xl">
             <Toolbar>
               <IconButton
                 color="inherit"
@@ -140,29 +151,18 @@ const Navbar = (props: NavbarProps) => {
               >
                 <IconMenu />
               </IconButton>
-              <Typography
-                variant="h6"
-                component="div"
-                sx={{ display: { xs: "none", sm: "block" } }}
-              >
-                Aubry Lungu
-              </Typography>
-              <Stack
-                sx={{ display: { xs: "none", sm: "block" } }}
-                direction="row"
-                spacing={4}
-              >
-                {navLinks.map(({ name, url }, idx) => (
-                  <Button
-                    key={idx}
-                    LinkComponent={Link}
-                    href={url}
-                    color="inherit"
-                  >
-                    {name}
-                  </Button>
-                ))}
-                <Button variant="outlined" color="secondary">
+              <Image
+                alt="aubry-lungu-logo"
+                src="/logos/aubry-lungu-logo-icon.svg"
+                height={40}
+                width={40}
+                style={{
+                  aspectRatio: 1,
+                }}
+              />
+              <Box flexGrow={1} />
+              <Stack direction="row" spacing={4}>
+                <Button variant="outlined" color="inherit">
                   Resume
                 </Button>
                 <IconButton onClick={toggleColorMode} color="inherit">
@@ -173,33 +173,51 @@ const Navbar = (props: NavbarProps) => {
                   )}
                 </IconButton>
               </Stack>
-              <Box sx={{ flexGrow: 1 }} />
             </Toolbar>
           </Container>
-          <Divider variant="fullWidth" />
         </AppBar>
       </AppBarUtil>
 
-      <Box component="nav">
-        <Drawer
-          container={container}
-          variant="temporary"
-          open={mobileOpen}
-          onClose={handleDrawerToggle}
-          color={"background.default"}
-          ModalProps={{
-            keepMounted: true,
-          }}
-          sx={{
-            display: { xs: "block", sm: "none" },
-            "& .MuiDrawer-paper": {
-              boxSizing: "border-box",
-              width: drawerWidth,
-            },
-          }}
-        >
-          {drawer}
-        </Drawer>
+      <Box
+        component="nav"
+        sx={{ width: { sm: drawerWidth }, flexShrink: { sm: 0 } }}
+      >
+        {!smMediaQuery ? (
+          <Drawer
+            container={container}
+            variant="temporary"
+            open={mobileOpen}
+            onClose={handleDrawerToggle}
+            ModalProps={{
+              keepMounted: true,
+            }}
+            sx={{
+              display: { xs: "block", sm: "none" },
+              "& .MuiDrawer-paper": {
+                boxSizing: "border-box",
+                width: drawerWidth,
+                borderColor: (theme) => theme.palette.background.default,
+              },
+            }}
+          >
+            {drawerContent}
+          </Drawer>
+        ) : (
+          <Drawer
+            variant="permanent"
+            sx={{
+              display: { xs: "none", sm: "block" },
+              "& .MuiDrawer-paper": {
+                boxSizing: "border-box",
+                width: drawerWidth,
+                borderColor: (theme) => theme.palette.background.default,
+              },
+            }}
+            open
+          >
+            {drawerContent}
+          </Drawer>
+        )}
       </Box>
     </>
   );

@@ -1,10 +1,6 @@
 import {
   Grid,
-  Typography,
   Stack,
-  Divider,
-  useTheme,
-  Box,
   styled,
 } from "@mui/material";
 

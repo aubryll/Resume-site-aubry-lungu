@@ -1,10 +1,6 @@
 import { CustomLink } from "@components/CustomLink";
 import {
-  Grid,
   Typography,
-  Stack,
-  Divider,
-  useTheme,
   Box,
   styled,
 } from "@mui/material";
@@ -43,8 +39,8 @@ export const Hero = ({ id = "hero", ...props }: HeroProps) => {
   return (
     <>
       <SectionItem item xs={12} md={8} {...props} id={id}>
-        <Typography color="inherit" fontFamily={`"DM Mono", monospace`}>
-          Hi, I'm
+        <Typography color="inherit" variant="subtitle1">
+          Hello there, I'm
         </Typography>
         <Typography
           variant="h1"
