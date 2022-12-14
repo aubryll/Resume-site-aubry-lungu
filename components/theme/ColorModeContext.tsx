@@ -1,6 +1,6 @@
 import React from "react";
 import type { ThemeOptions } from "@mui/material/styles";
-import { createTheme, responsiveFontSizes, ThemeProvider } from "@mui/material";
+import { createTheme, responsiveFontSizes, ThemeProvider, useMediaQuery } from "@mui/material";
 import { createPalette } from "./createPalette";
 
 type IColorModeContext = {
@@ -54,7 +54,8 @@ const componentsOverride: ThemeOptions["components"] = {
 export const ColorModeContextProvider = ({
   children,
 }: ColorModeContextProviderProps) => {
-  const [mode, setMode] = React.useState<"light" | "dark">("dark");
+  const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)');
+  const [mode, setMode] = React.useState<"light" | "dark">(prefersDarkMode ? "dark" : "light");
   const colorMode = React.useMemo(
     () => ({
       toggleColorMode: () => {
