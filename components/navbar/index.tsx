@@ -18,6 +18,7 @@ import {
   Slide,
   Fade,
   Fab,
+  Container,
 } from "@mui/material";
 import {
   IconArrowUp,
@@ -26,7 +27,7 @@ import {
   IconMenu,
 } from "@tabler/icons";
 import { navLinks } from "@util/config";
-import { useColorMode } from "@components/context/ColorModeContext";
+import { useColorMode } from "@components/theme/ColorModeContext";
 import Link from "next/link";
 
 type NavbarProps = {
@@ -117,7 +118,7 @@ const Navbar = (props: NavbarProps) => {
   );
 
   return (
-    <>
+    <Container maxWidth="lg">
       <AppBarUtil {...props}>
         <AppBar position="sticky" component="nav">
           <Toolbar>
@@ -133,7 +134,7 @@ const Navbar = (props: NavbarProps) => {
             <Typography
               variant="h6"
               component="div"
-              sx={{ flexGrow: 1, display: { xs: "none", sm: "block" } }}
+              sx={{ display: { xs: "none", sm: "block" } }}
             >
               Aubry Lungu
             </Typography>
@@ -163,6 +164,7 @@ const Navbar = (props: NavbarProps) => {
                 )}
               </IconButton>
             </Stack>
+            <Box  sx={{ flexGrow: 1}}/>
           </Toolbar>
         </AppBar>
       </AppBarUtil>
@@ -188,7 +190,7 @@ const Navbar = (props: NavbarProps) => {
           {drawer}
         </Drawer>
       </Box>
-    </>
+    </Container>
   );
 };
 

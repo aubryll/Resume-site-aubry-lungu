@@ -6,7 +6,7 @@ import type { AppProps } from "next/app";
 import { Layout } from "@components/layout";
 import React from "react";
 import Head from "next/head";
-import { ColorModeContextProvider } from "@components/context/ColorModeContext";
+import { ColorModeContextProvider } from "@components/theme/ColorModeContext";
 import { StyledEngineProvider } from "@mui/material";
 import { ParallaxProvider } from "react-scroll-parallax";
 

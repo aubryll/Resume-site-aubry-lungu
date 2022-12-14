@@ -1,6 +1,6 @@
 import * as React from "react";
 import { Hero, About } from "@components/sections";
-import { Fab, Fade, Grid, Box, useScrollTrigger } from "@mui/material";
+import { Fab, Fade, Grid, Box, useScrollTrigger, styled } from "@mui/material";
 import { IconArrowUp } from "@tabler/icons";
 import dynamic from "next/dynamic";
 import { motion } from "framer-motion";
@@ -19,6 +19,15 @@ const Experience = dynamic(() => import("@components/sections/experience"), {
 type HomeProps = {
   window?: () => Window;
 };
+
+//We do not want to display to go up button on mobile
+//it is a little incosistent because of the mugshot
+//taking up more width than it should.
+const FadeDesktop = styled(Fade)(({theme})=>({
+  "@media (max-width:768px)": {
+    display: 'none'
+  },
+}))
 
 const Home = ({ window, ...props }: HomeProps) => {
   const { x, y } = useMousePosition();
@@ -54,7 +63,7 @@ const Home = ({ window, ...props }: HomeProps) => {
         <About {...props} />
         <Experience {...props} />
       </Grid>
-      <Fade in={trigger}>
+      <FadeDesktop in={trigger}>
         <Box
           role="presentation"
           sx={{ position: "fixed", bottom: 16, right: 16 }}
@@ -68,7 +77,7 @@ const Home = ({ window, ...props }: HomeProps) => {
             <IconArrowUp />
           </Fab>
         </Box>
-      </Fade>
+      </FadeDesktop>
       <motion.div
         className="cursor"
         variants={variants}

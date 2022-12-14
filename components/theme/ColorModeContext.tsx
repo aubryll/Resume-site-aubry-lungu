@@ -1,17 +1,9 @@
 import React from "react";
 import type { ThemeOptions } from "@mui/material/styles";
 import { createTheme, responsiveFontSizes, ThemeProvider } from "@mui/material";
+import { createPalette } from "./createPalette";
 
-const colors = {
-  navy: "#0a192f",
-  lightNavy: "#112240",
-  lightestNavy: "#233554",
-  slate: "#8892b0",
-  lightSlate: "#a8b2d1",
-  lightestSlate: "#ccd6f6",
-  white: "#e6f1ff",
-  green: "#64ffda",
-};
+
 
 type IColorModeContext = {
   toggleColorMode: () => void;
@@ -27,7 +19,7 @@ export const ColorModeContext = React.createContext<IColorModeContext>({
   mode: "dark",
 });
 
-export const componentsOverride: ThemeOptions["components"] = {
+const componentsOverride: ThemeOptions["components"] = {
   MuiDialogTitle: {
     styleOverrides: {
       root: {
@@ -38,8 +30,13 @@ export const componentsOverride: ThemeOptions["components"] = {
   MuiButton: {
     styleOverrides: {
       outlined: {
-        color: colors.green,
+        //color: colors.secondary,
       },
+    },
+  },
+  MuiTypography: {
+    defaultProps: {
+      //variant: 'h6',
     },
   },
 };
@@ -63,21 +60,7 @@ export const ColorModeContextProvider = ({
       createTheme({
         palette: {
           mode,
-          background: {
-            default: colors.navy,
-            paper: colors.navy,
-          },
-          primary: {
-            main: colors.navy,
-            contrastText: colors.white,
-          },
-          secondary: {
-            main: colors.green,
-          },
-          text: {
-            primary: colors.white,
-          },
-          divider: colors.white,
+          ...createPalette(mode),
         },
 
         typography: {
@@ -86,7 +69,7 @@ export const ColorModeContextProvider = ({
           h2: { fontFamily: `"Bungee Shade", cursive` },
           h3: { fontFamily: `"Bungee Shade", cursive` },
           h4: { fontFamily: `"Bungee Shade", cursive` },
-          button: { textTransform: "none", fontFamily: `"DM Mono", monospace` },
+          button: { textTransform: "none", fontWeight: 800 },
         },
         components: {
           ...componentsOverride,

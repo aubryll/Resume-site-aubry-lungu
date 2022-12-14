@@ -16,6 +16,8 @@ import {
   Typography,
   useMediaQuery,
   useTheme,
+  Paper,
+  Fade,
 } from "@mui/material";
 import { SectionItem } from "../SectionItem";
 import { BaseSectionProps } from "../type/BaseProps";
@@ -24,6 +26,7 @@ import { CustomLink } from "@components/CustomLink";
 import { Parallax } from "react-scroll-parallax";
 import workExperience from "@api/data/experience.json";
 import useWindowDimensions from "@util/hooks/useDimensions";
+//import { colors } from "@components/theme/ColorModeContext";
 
 type ExperienceProps = BaseSectionProps;
 
@@ -47,15 +50,15 @@ interface TabPanelProps {
 const TabPanel = (props: TabPanelProps) => {
   const { children, value, index, ...other } = props;
   return (
-    <div
-      role="tabpanel"
-      hidden={value !== index}
-      id={`tabpanel-${index}`}
-      aria-labelledby={`tab-${index}`}
-      {...other}
-    >
-      {value === index && children}
-    </div>
+      <div
+        role="tabpanel"
+        hidden={value !== index}
+        id={`tabpanel-${index}`}
+        aria-labelledby={`tab-${index}`}
+        {...other}
+      >
+        {value === index && children}
+      </div>
   );
 };
 
@@ -89,9 +92,13 @@ const Experience = ({ id = "experience", ...props }: ExperienceProps) => {
           </Typography>
         </Divider>
         <Grid
+          component={Paper}
+          variant="outlined"
+          p={3}
+          //sx={{ background: colors.lightPaper }}
           {...(smMediaQuery && {
             container: true,
-            spacing: 4,
+            rowSpacing: 4,
           })}
         >
           <Grid item sm={12} md={3}>
@@ -99,8 +106,8 @@ const Experience = ({ id = "experience", ...props }: ExperienceProps) => {
               sx={{
                 maxWidth: {
                   //Fix for unresponsive/overflowing MUI tabs on mobile
-                  xs: width ? width * 0.9 : 320,
-                  sm: width ? width * 0.9 : 480,
+                  xs: width ? width * 0.7 : 320,
+                  sm: width ? width * 0.7 : 480,
                   md: "100%",
                 },
                 "@media (max-width:768px)": {
@@ -117,10 +124,12 @@ const Experience = ({ id = "experience", ...props }: ExperienceProps) => {
                 textColor="inherit"
                 indicatorColor="secondary"
                 scrollButtons="auto"
+                TabIndicatorProps={{color: 'blue'}}
                 sx={{
                   ...(smMediaQuery && {
-                    borderLeft: 1,
+                    //borderLeft: 1,
                     borderColor: "inherit",
+                    textAlign: "left",
                     [`& .MuiTabs-indicator`]: {
                       left: "0px",
                     },
@@ -128,12 +137,7 @@ const Experience = ({ id = "experience", ...props }: ExperienceProps) => {
                 }}
               >
                 {workExperience.map(({ name }, idx) => (
-                  <Tab
-                    key={idx}
-                    label={name}
-                    id={`vertical-tab-${idx}`}
-                    sx={smMediaQuery ? { alignItems: "flex-start" } : null}
-                  />
+                  <Tab key={idx} label={name} id={`tab-${idx}`} />
                 ))}
               </Tabs>
             </Box>
@@ -187,9 +191,9 @@ const createItem = (
         </Box>
         <Stack>
           <Typography
-            variant="subtitle1"
+            variant="h6"
+            fontWeight={800}
             component="div"
-            fontWeight="bold"
             color="inherit"
             mb={1}
           >
@@ -199,11 +203,7 @@ const createItem = (
             </Box>
           </Typography>
 
-          <Typography
-            fontFamily={`"DM Mono", monospace`}
-            variant="inherit"
-            color="inherit"
-          >
+          <Typography fontFamily={`"DM Mono", monospace`} color="inherit">
             {`${from} - ${to} in ${location}`}
           </Typography>
         </Stack>
@@ -211,14 +211,14 @@ const createItem = (
       <List>
         {duties.map((duty, idx) => (
           <ListItem disableGutters key={idx}>
-            <Typography color="inherit" variant="inherit">
+            <Typography color="inherit">
               <Box
                 fontWeight="bold"
                 component="span"
                 display="inline"
                 color="secondary.main"
               >
-                {`${++idx}. `}
+                {`\u25CF `}
               </Box>
               {duty}
             </Typography>
