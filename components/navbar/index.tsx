@@ -120,13 +120,13 @@ const Navbar = (props: NavbarProps) => {
           <IconBrandGithub />
         </IconButton>
         <IconButton>
+          <IconMail />
+        </IconButton>
+        <IconButton>
           <IconBrandLinkedin />
         </IconButton>
         <IconButton>
           <IconBrandFacebook />
-        </IconButton>
-        <IconButton>
-          <IconMail />
         </IconButton>
       </Stack>
     </Stack>
@@ -162,7 +162,7 @@ const Navbar = (props: NavbarProps) => {
               />
               <Box flexGrow={1} />
               <Stack direction="row" spacing={4}>
-                <Button variant="outlined" color="inherit">
+                <Button variant="outlined">
                   Resume
                 </Button>
                 <IconButton onClick={toggleColorMode} color="inherit">

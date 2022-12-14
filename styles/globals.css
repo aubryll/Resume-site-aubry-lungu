@@ -9,7 +9,7 @@ html {
     cursor: none;
   }
   .cursor {
-    background-color: #64ffda;
+    background-color: #265D97;
     height: 32px;
     width: 32px;
     border-radius: 50%;
@@ -17,5 +17,6 @@ html {
     top: 0;
     left: 0;
     pointer-events: none;
+    z-index: 10;
   }
 }

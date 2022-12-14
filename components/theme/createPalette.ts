@@ -7,6 +7,7 @@ const common = {
   lightBlue: '#265D97',
   lightNavy: "#031E3C",
   navy: "#0B1929",
+  lightGrey: '#B1BAC2'
 };
 
 export const light = {
@@ -64,7 +65,7 @@ export const dark = {
   },
   text: {
     primary: common.white,
-    secondary: "rgba(255, 255, 255, 0.7)",
+    secondary: common.lightGrey,
     disabled: "rgba(255, 255, 255, 0.5)",
     icon: "rgba(255, 255, 255, 0.5)",
   },

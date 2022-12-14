@@ -1,10 +1,11 @@
 import * as React from "react";
-import { Hero, About } from "@components/sections";
+import { Hero, About, Contact } from "@components/sections";
 import { Fab, Fade, Grid, Box, useScrollTrigger, styled } from "@mui/material";
 import { IconArrowUp } from "@tabler/icons";
 import dynamic from "next/dynamic";
 import { motion } from "framer-motion";
 import useMousePosition from "@util/hooks/useMousePosition";
+import { Footer } from "@components/footer/Index";
 
 /**
  * Because we are relying on the useWindowDimensions hook to fix
@@ -62,6 +63,8 @@ const Home = ({ window, ...props }: HomeProps) => {
         <Hero {...props} />
         <About {...props} />
         <Experience {...props} />
+        <Contact {...props}/>
+        <Footer {...props}/>
       </Grid>
       <FadeDesktop in={trigger}>
         <Box

@@ -39,7 +39,7 @@ export const Hero = ({ id = "hero", ...props }: HeroProps) => {
   return (
     <>
       <SectionItem item xs={12} md={8} {...props} id={id}>
-        <Typography color="inherit" variant="subtitle1">
+        <Typography color="inherit" variant="h4">
           Hello there, I'm
         </Typography>
         <Typography
@@ -53,7 +53,7 @@ export const Hero = ({ id = "hero", ...props }: HeroProps) => {
           </Box>
           Lungu.
         </Typography>
-        <Typography color="inherit" component="div">
+        <Typography color="text.secondary" component="div">
           <Box fontWeight="bold" display="inline">
             UX/UI Engineer, Software Engineer, Data Scientist, and Product
             Engineer Here!{" "}
@@ -61,7 +61,7 @@ export const Hero = ({ id = "hero", ...props }: HeroProps) => {
           Making fantastic digital products that help people is a passion of
           mine.
         </Typography>
-        <Typography component="div" color="inherit">
+        <Typography component="div" color="text.secondary">
           Currently, I'm a UX/UI engineer at{" "}
           <CustomLink href="https://www.orbis.org/">
             Orbis International

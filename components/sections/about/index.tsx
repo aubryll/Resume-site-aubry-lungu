@@ -3,11 +3,8 @@ import {
   Divider,
   styled,
   Typography,
-  Grid,
   List,
   ListItem,
-  useTheme,
-  ListItemText,
   Paper,
   Box,
 } from "@mui/material";
@@ -67,15 +64,14 @@ export const About = ({ id = "about", ...props }: AboutProps) => {
           variant="outlined"
           p={3}
           spacing={4}
-          //sx={{ background: colors.lightPaper }}
         >
-          <Typography color="inherit">
+          <Typography color="text.secondary">
             Hello, my name is Aubry Lungu, and I like creating products that
             look and feel amazing. My interest was sparked in 2012, when I
             created a calculator in HTML and CSS. It wasn't much, but it lit a
             fire that began a career.
           </Typography>
-          <Typography component="div"  color="inherit">
+          <Typography component="div"  color="text.secondary">
             Today, I've had the privilege of working with amazing, talented
             people in the{" "}
             <CustomLink href="https://first-quantum.com/">mining</CustomLink>,{" "}
@@ -84,7 +80,7 @@ export const About = ({ id = "about", ...props }: AboutProps) => {
             sectors to create products that enhance people's lives and grow
             economies.
           </Typography>
-          <Typography  color="inherit">
+          <Typography  color="text.secondary">
             Here are some of the skills I've picked up during the course of my
             profession.
           </Typography>
@@ -93,8 +89,7 @@ export const About = ({ id = "about", ...props }: AboutProps) => {
               <ListItem disableGutters key={idx}>
                 <Typography
                   component="div"
-                  
-                  color="inherit"
+                  color="text.secondary"
                 >
                   <Box
                     fontWeight="bold"

@@ -184,19 +184,19 @@ const createItem = (
         </Box>
         <Stack>
           <Typography
-            variant="h6"
-            fontWeight={800}
+            variant="subtitle1"
+            fontWeight="bold"
             component="div"
             color="inherit"
             mb={1}
           >
             {`${role} `}
-            <Box color={"secondary.light"} display="inline">
+            <Box color={"inherit"} display="inline">
               <CustomLink href={link}>{`@ ${name}`}</CustomLink>
             </Box>
           </Typography>
 
-          <Typography fontFamily={`"DM Mono", monospace`} color="inherit">
+          <Typography color="inherit">
             {`${from} - ${to} in ${location}`}
           </Typography>
         </Stack>
@@ -204,7 +204,7 @@ const createItem = (
       <List>
         {duties.map((duty, idx) => (
           <ListItem disableGutters key={idx}>
-            <Typography color="inherit">
+            <Typography color="text.secondary">
               <Box
                 fontWeight="bold"
                 component="span"
