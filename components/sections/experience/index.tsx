@@ -87,7 +87,7 @@ const Experience = ({ id = "experience", ...props }: ExperienceProps) => {
           role="presentation"
           variant="fullWidth"
         >
-          <Typography variant="h4" component={Parallax} translateX={[-10, 10]}>
+          <Typography variant="h3" component={Parallax} translateX={[-10, 10]}>
             Experience
           </Typography>
         </Divider>

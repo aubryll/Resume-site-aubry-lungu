@@ -70,6 +70,7 @@ const Home = ({ window, ...props }: HomeProps) => {
         >
           <Fab
             size="large"
+            color="secondary"
             LinkComponent={"a"}
             href="#hero"
             aria-label="scroll back to top"

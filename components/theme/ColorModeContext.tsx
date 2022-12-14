@@ -3,8 +3,6 @@ import type { ThemeOptions } from "@mui/material/styles";
 import { createTheme, responsiveFontSizes, ThemeProvider } from "@mui/material";
 import { createPalette } from "./createPalette";
 
-
-
 type IColorModeContext = {
   toggleColorMode: () => void;
   mode: "dark" | "light";
@@ -27,6 +25,7 @@ const componentsOverride: ThemeOptions["components"] = {
       },
     },
   },
+
   MuiButton: {
     styleOverrides: {
       outlined: {
@@ -38,6 +37,17 @@ const componentsOverride: ThemeOptions["components"] = {
     defaultProps: {
       //variant: 'h6',
     },
+  },
+  MuiCssBaseline: {
+    styleOverrides: `
+    @font-face {
+      font-family: 'PlusJakartaSans';
+      font-style: bold;
+      font-display: swap;
+      font-weight: 800;
+      src: url("/fonts/PlusJakartaSans-ExtraBold.woff");
+    }
+    `,
   },
 };
 
@@ -62,13 +72,12 @@ export const ColorModeContextProvider = ({
           mode,
           ...createPalette(mode),
         },
-
         typography: {
           fontFamily: `"IBM Plex Sans", sans-serif`,
-          h1: { fontFamily: `"Bungee Shade", cursive` },
-          h2: { fontFamily: `"Bungee Shade", cursive` },
-          h3: { fontFamily: `"Bungee Shade", cursive` },
-          h4: { fontFamily: `"Bungee Shade", cursive` },
+          h1: { fontSize: "8em", fontFamily: `PlusJakartaSans` },
+          h2: { fontFamily: `PlusJakartaSans` },
+          h3: { fontFamily: `PlusJakartaSans` },
+          h4: { fontFamily: `PlusJakartaSans` },
           button: { textTransform: "none", fontWeight: 800 },
         },
         components: {

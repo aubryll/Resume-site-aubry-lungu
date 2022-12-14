@@ -10,7 +10,7 @@ import {
   Typography,
   Drawer,
   Box,
-  AppBar,
+  AppBar as MuiAppBar,
   Toolbar,
   Stack,
   useTheme,
@@ -19,6 +19,7 @@ import {
   Fade,
   Fab,
   Container,
+  styled,
 } from "@mui/material";
 import {
   IconArrowUp,
@@ -40,6 +41,12 @@ type AppBarProps = {
 };
 const drawerWidth = 240;
 
+const AppBar = styled(MuiAppBar)(({ theme }) => ({
+  ...(theme.palette.mode === "dark" && {
+    background: theme.palette.background.default,
+  }),
+}));
+
 const AppBarUtil = ({ window, children }: AppBarProps) => {
   const hideOnScrollTrigger = useScrollTrigger({
     target: window ? window() : undefined,
@@ -51,13 +58,14 @@ const AppBarUtil = ({ window, children }: AppBarProps) => {
     target: window ? window() : undefined,
   });
 
-  const mChildren = React.cloneElement(children, {
+  /*const mChildren = React.cloneElement(children, {
     elevation: elevationTrigger ? 4 : 0,
   });
+  */
 
   return (
     <Slide appear={false} direction="down" in={!hideOnScrollTrigger}>
-      {mChildren}
+      {children}
     </Slide>
   );
 };
@@ -118,54 +126,57 @@ const Navbar = (props: NavbarProps) => {
   );
 
   return (
-    <Container maxWidth="lg">
+    <>
       <AppBarUtil {...props}>
-        <AppBar position="sticky" component="nav">
-          <Toolbar>
-            <IconButton
-              color="inherit"
-              aria-label="open drawer"
-              edge="start"
-              onClick={handleDrawerToggle}
-              sx={{ mr: 2, display: { sm: "none" } }}
-            >
-              <IconMenu />
-            </IconButton>
-            <Typography
-              variant="h6"
-              component="div"
-              sx={{ display: { xs: "none", sm: "block" } }}
-            >
-              Aubry Lungu
-            </Typography>
-            <Stack
-              sx={{ display: { xs: "none", sm: "block" } }}
-              direction="row"
-              spacing={4}
-            >
-              {navLinks.map(({ name, url }, idx) => (
-                <Button
-                  key={idx}
-                  LinkComponent={Link}
-                  href={url}
-                  color="inherit"
-                >
-                  {name}
-                </Button>
-              ))}
-              <Button variant="outlined" color="inherit">
-                Resume
-              </Button>
-              <IconButton onClick={toggleColorMode} color="inherit">
-                {mode === "light" ? (
-                  <IconBrightness2 />
-                ) : (
-                  <IconBrightnessHalf />
-                )}
+        <AppBar position="sticky" component="nav" elevation={0}>
+          <Container maxWidth="lg">
+            <Toolbar>
+              <IconButton
+                color="inherit"
+                aria-label="open drawer"
+                edge="start"
+                onClick={handleDrawerToggle}
+                sx={{ mr: 2, display: { sm: "none" } }}
+              >
+                <IconMenu />
               </IconButton>
-            </Stack>
-            <Box  sx={{ flexGrow: 1}}/>
-          </Toolbar>
+              <Typography
+                variant="h6"
+                component="div"
+                sx={{ display: { xs: "none", sm: "block" } }}
+              >
+                Aubry Lungu
+              </Typography>
+              <Stack
+                sx={{ display: { xs: "none", sm: "block" } }}
+                direction="row"
+                spacing={4}
+              >
+                {navLinks.map(({ name, url }, idx) => (
+                  <Button
+                    key={idx}
+                    LinkComponent={Link}
+                    href={url}
+                    color="inherit"
+                  >
+                    {name}
+                  </Button>
+                ))}
+                <Button variant="outlined" color="secondary">
+                  Resume
+                </Button>
+                <IconButton onClick={toggleColorMode} color="inherit">
+                  {mode === "light" ? (
+                    <IconBrightness2 />
+                  ) : (
+                    <IconBrightnessHalf />
+                  )}
+                </IconButton>
+              </Stack>
+              <Box sx={{ flexGrow: 1 }} />
+            </Toolbar>
+          </Container>
+          <Divider variant="fullWidth" />
         </AppBar>
       </AppBarUtil>
 
@@ -190,7 +201,7 @@ const Navbar = (props: NavbarProps) => {
           {drawer}
         </Drawer>
       </Box>
-    </Container>
+    </>
   );
 };
 

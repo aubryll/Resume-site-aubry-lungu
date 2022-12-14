@@ -2,6 +2,7 @@ import "../styles/globals.css";
 import "@fontsource/ibm-plex-sans";
 import "@fontsource/dm-mono";
 import "@fontsource/bungee-shade";
+import "@fontsource/inter";
 import type { AppProps } from "next/app";
 import { Layout } from "@components/layout";
 import React from "react";

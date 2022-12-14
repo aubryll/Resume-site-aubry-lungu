@@ -1,8 +1,12 @@
+import { colors } from "@mui/material";
+
 const common = {
   white: "#e6f1ff",
-  accent: "#0074E9",
+  blue: "#017FFF",
+  lighterBlue: '#66B2FF',
+  lightBlue: '#265D97',
   lightNavy: "#031E3C",
-  navy: "#0B1728",
+  navy: "#0B1929",
 };
 
 export const light = {
@@ -52,9 +56,11 @@ export const light = {
 export const dark = {
   primary: {
     main: "#90caf9",
+    
   },
   secondary: {
-    main: "#ce93d8",
+    main: common.blue,
+    light: common.lighterBlue,
   },
   text: {
     primary: common.white,
@@ -62,10 +68,10 @@ export const dark = {
     disabled: "rgba(255, 255, 255, 0.5)",
     icon: "rgba(255, 255, 255, 0.5)",
   },
-  divider: "rgba(255, 255, 255, 0.12)",
+  divider: common.lightBlue,
   background: {
-    paper: "#121212",
-    default: "#121212",
+    paper: common.lightNavy,
+    default: common.navy,
   },
   action: {
     active: common.white,
@@ -74,9 +80,9 @@ export const dark = {
     selected: "rgba(255, 255, 255, 0.16)",
     selectedOpacity: 0.16,
     disabled: "rgba(255, 255, 255, 0.3)",
-    disabledBackground: "rgba(255, 255, 255, 0.12)",
+    disabledBackground: common.lightBlue,
     disabledOpacity: 0.38,
-    focus: "rgba(255, 255, 255, 0.12)",
+    focus: common.lightBlue,
     focusOpacity: 0.12,
     activatedOpacity: 0.24,
   },

@@ -54,7 +54,7 @@ export const About = ({ id = "about", ...props }: AboutProps) => {
           variant="fullWidth"
         >
           <Typography
-            variant="h4"
+            variant="h3"
             color="inherit"
             component={Parallax}
             translateX={[10, -10]}

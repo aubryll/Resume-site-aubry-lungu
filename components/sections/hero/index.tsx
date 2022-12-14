@@ -23,7 +23,7 @@ const MugShotBox = styled(Box)(({ theme }) => ({
   alignItems: "center",
   justifyContent: "center",
   [theme.breakpoints.down("md")]: {
-    display: 'none'
+    display: "none",
   },
   [theme.breakpoints.up("md")]: {
     margin: "50px auto 0",
@@ -43,22 +43,21 @@ export const Hero = ({ id = "hero", ...props }: HeroProps) => {
   return (
     <>
       <SectionItem item xs={12} md={8} {...props} id={id}>
-        <Typography
-          
-          color="inherit"
-          fontFamily={`"DM Mono", monospace`}
-        >
+        <Typography color="inherit" fontFamily={`"DM Mono", monospace`}>
           Hi, I'm
         </Typography>
         <Typography
           variant="h1"
-          color="secondary.main"
+          color="inherit"
           component={Parallax}
           translateY={[-19, 19]}
         >
-          Aubry Lungu.
+          <Box fontWeight="bold" display="inline" color="secondary.light">
+          Aubry {" "}
+          </Box>
+          Lungu.
         </Typography>
-        <Typography  color="inherit" component="div">
+        <Typography color="inherit" component="div">
           <Box fontWeight="bold" display="inline">
             UX/UI Engineer, Software Engineer, Data Scientist, and Product
             Engineer Here!{" "}
@@ -66,7 +65,7 @@ export const Hero = ({ id = "hero", ...props }: HeroProps) => {
           Making fantastic digital products that help people is a passion of
           mine.
         </Typography>
-        <Typography component="div"  color="inherit">
+        <Typography component="div" color="inherit">
           Currently, I'm a UX/UI engineer at{" "}
           <CustomLink href="https://www.orbis.org/">
             Orbis International
