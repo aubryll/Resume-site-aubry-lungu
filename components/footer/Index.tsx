@@ -1,5 +1,4 @@
-import { SectionGridItem, SectionItem } from "@components/sections";
-import { Box, Divider, Grid, Stack, Typography } from "@mui/material";
+import {  Divider, Grid,Typography } from "@mui/material";
 
 type FooterProps = {};
 
