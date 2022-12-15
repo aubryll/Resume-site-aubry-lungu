@@ -118,16 +118,16 @@ const Navbar = (props: NavbarProps) => {
       <Box flexGrow={1} />
       <Divider variant="fullWidth" flexItem />
       <Stack direction="row" m={4}>
-        <IconButton aria-label="Go to my Github">
+        <IconButton aria-label="Go to my Github" LinkComponent={Link} href="https://github.com/aubryll">
           <IconBrandGithub />
         </IconButton>
-        <IconButton aria-label="Email me">
+        <IconButton aria-label="Email me" LinkComponent={Link} href="mailto:lunguaubry@gmail.com">
           <IconMail />
         </IconButton>
-        <IconButton aria-label="Go to my LinkedIn">
+        <IconButton aria-label="Go to my LinkedIn" LinkComponent={Link} href="https://www.linkedin.com/in/aubry-lungu-32a64a59/">
           <IconBrandLinkedin />
         </IconButton>
-        <IconButton aria-label="Go to my facebook">
+        <IconButton aria-label="Go to my facebook" LinkComponent={Link} href="https://web.facebook.com/Lungu.Aubry/">
           <IconBrandFacebook />
         </IconButton>
       </Stack>

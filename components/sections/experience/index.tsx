@@ -203,7 +203,7 @@ const createItem = (
       <List>
         {duties.map((duty, idx) => (
           <ListItem disableGutters key={idx}>
-            <Typography color="text.secondary">
+            <Typography color="inherit">
               <Box
                 fontWeight="bold"
                 component="span"

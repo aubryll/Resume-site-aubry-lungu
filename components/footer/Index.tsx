@@ -13,7 +13,7 @@ export const Footer = (props: FooterProps) => {
       }}
     >
       <Divider variant="fullWidth" sx={{ my: (theme) => theme.spacing(6) }} />
-      <Typography color="text.secondary" variant="subtitle2">
+      <Typography color="inherit" variant="body2">
         Designed and developed by Aubry Lungu
       </Typography>
     </Grid>

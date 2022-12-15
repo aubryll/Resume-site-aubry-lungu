@@ -64,13 +64,13 @@ export const About = ({ id = "about", ...props }: AboutProps) => {
           p={3}
           spacing={4}
         >
-          <Typography color="text.secondary">
+          <Typography color="inherit">
             Hello, my name is Aubry Lungu, and I like creating products that
             look and feel amazing. My interest was sparked in 2012, when I
             created a calculator in HTML and CSS. It wasn&apos;t much, but it lit a
             fire that began a career.
           </Typography>
-          <Typography component="div"  color="text.secondary">
+          <Typography component="div"  color="inherit">
             Today, I&apos;ve had the privilege of working with amazing, talented
             people in the{" "}
             <CustomLink href="https://first-quantum.com/">mining</CustomLink>,{" "}
@@ -79,7 +79,7 @@ export const About = ({ id = "about", ...props }: AboutProps) => {
             sectors to create products that enhance people&apos;s lives and grow
             economies.
           </Typography>
-          <Typography  color="text.secondary">
+          <Typography  color="inherit">
             Here are some of the skills I&apos;ve picked up during the course of my
             profession.
           </Typography>
@@ -88,7 +88,7 @@ export const About = ({ id = "about", ...props }: AboutProps) => {
               <ListItem disableGutters key={idx}>
                 <Typography
                   component="div"
-                  color="text.secondary"
+                  color="inherit"
                 >
                   <Box
                     fontWeight="bold"

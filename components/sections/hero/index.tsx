@@ -45,7 +45,7 @@ export const Hero = ({ id = "hero", ...props }: HeroProps) => {
             Lungu.
           </Typography>
         </Parallax>
-        <Typography color="text.secondary" component="div">
+        <Typography color="inherit" component="div">
           <Box fontWeight="bold" display="inline">
             UX/UI Engineer, Software Engineer, Data Scientist, and Product
             Engineer Here!{" "}
@@ -53,7 +53,7 @@ export const Hero = ({ id = "hero", ...props }: HeroProps) => {
           Making fantastic digital products that help people is a passion of
           mine.
         </Typography>
-        <Typography component="div" color="text.secondary">
+        <Typography component="div" color="inherit">
           Currently, I&apos;m a UX/UI engineer at{" "}
           <CustomLink href="https://www.orbis.org/">
             Orbis International
