@@ -117,6 +117,7 @@ const Experience = ({ id = "experience", ...props }: ExperienceProps) => {
                 allowScrollButtonsMobile
                 indicatorColor="secondary"
                 scrollButtons="auto"
+                aria-label="Where I've worked"
                 TabIndicatorProps={{ color: "blue" }}
                 sx={{
                   ...(smMediaQuery && {
@@ -173,7 +174,6 @@ const createItem = (
             height={80}
             width={80}
             alt={`${name}-logo`}
-            priority={true}
             style={{
               objectFit: "scale-down",
               borderRadius: 5,

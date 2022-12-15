@@ -10,8 +10,6 @@ export const Footer = (props: FooterProps) => {
       {...props}
       sx={{
         bottom: 0,
-        width: "100vw",
-        zIndex: (theme) => theme.zIndex.drawer + 1,
       }}
     >
       <Divider variant="fullWidth" sx={{ my: (theme) => theme.spacing(6) }} />

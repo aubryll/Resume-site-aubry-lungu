@@ -70,12 +70,11 @@ export const Hero = ({ id = "hero", ...props }: HeroProps) => {
           <Parallax speed={95} rotate={[-20, 20]}>
             <div>
               <Image
-                alt={"head-shot"}
+                alt={"Photo of the author"}
                 src={"/photo.jpeg"}
                 fill
-                priority={true}
-                sizes="(max-width: 768px) 95vw, (max-width: 1200px) 45vw,30vw"
-                quality={80}
+                sizes="(max-width: 1200px) 45vw,30vw"
+                quality={50}
                 style={{
                   objectFit: "cover",
                   borderRadius: 5,

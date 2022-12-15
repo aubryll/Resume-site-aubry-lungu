@@ -100,6 +100,7 @@ const Navbar = (props: NavbarProps) => {
         {navLinks.map(({ name, url }, idx) => (
           <ListItem key={idx}>
             <ListItemButton
+              aria-label={`Go to ${name}`}
               LinkComponent={Link}
               href={url}
             >
@@ -116,16 +117,16 @@ const Navbar = (props: NavbarProps) => {
       <Box flexGrow={1} />
       <Divider variant="fullWidth" flexItem />
       <Stack direction="row" m={4}>
-        <IconButton>
+        <IconButton aria-label="Go to my Github">
           <IconBrandGithub />
         </IconButton>
-        <IconButton>
+        <IconButton aria-label="Email me">
           <IconMail />
         </IconButton>
-        <IconButton>
+        <IconButton aria-label="Go to my LinkedIn">
           <IconBrandLinkedin />
         </IconButton>
-        <IconButton>
+        <IconButton aria-label="Go to my facebook">
           <IconBrandFacebook />
         </IconButton>
       </Stack>
@@ -161,10 +162,10 @@ const Navbar = (props: NavbarProps) => {
               />
               <Box flexGrow={1} />
               <Stack direction="row" spacing={4}>
-                <Button variant="outlined">
+                <Button variant="outlined" aria-label="Download resume">
                   Resume
                 </Button>
-                <IconButton onClick={toggleColorMode} color="inherit">
+                <IconButton onClick={toggleColorMode} color="inherit" aria-label="ToggleColorMode">
                   {mode === "light" ? (
                     <IconBrightness2 />
                   ) : (
