@@ -90,13 +90,13 @@ const Experience = ({ id = "experience", ...props }: ExperienceProps) => {
             Experience
           </Typography>
         </Divider>
-        {workExperience.map(createItem)}
+        {workExperience.map(CreateItem)}
       </SectionItem>
     </>
   );
 };
 
-const createItem = (
+const CreateItem = (
   { logo, link, location, role, name, from, to, duties }: Experience,
   index: number
 ) => {
