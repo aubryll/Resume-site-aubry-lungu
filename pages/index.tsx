@@ -64,7 +64,6 @@ const Home = ({ window, ...props }: HomeProps) => {
         <About {...props} />
         <Experience {...props} />
         <Contact {...props}/>
-        <Footer {...props}/>
       </Grid>
       <FadeDesktop in={trigger}>
         <Box

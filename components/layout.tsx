@@ -11,10 +11,15 @@ export const Layout = ({ children, ...props }: LayoutProps) => {
     <>
       <CssBaseline />
       <nav>
-      <Navbar {...props} />
+        <Navbar {...props} />
       </nav>
       <main>
-        <Container maxWidth="lg">{children}</Container>
+        <Container maxWidth="lg">
+          {children}
+          <footer>
+            <Footer />
+          </footer>
+        </Container>
       </main>
     </>
   );

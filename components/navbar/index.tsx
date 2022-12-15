@@ -136,7 +136,6 @@ const Navbar = (props: NavbarProps) => {
     <>
       <AppBarUtil {...props}>
         <AppBar
-          position="sticky"
           elevation={0}
           sx={{ zIndex: (theme) => theme.zIndex.drawer + 1 }}
         >
