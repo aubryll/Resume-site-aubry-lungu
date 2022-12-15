@@ -3,9 +3,8 @@ import { Hero, About, Contact } from "@components/sections";
 import { Fab, Fade, Grid, Box, useScrollTrigger, styled } from "@mui/material";
 import { IconArrowUp } from "@tabler/icons";
 import dynamic from "next/dynamic";
-import { motion } from "framer-motion";
+import { motion, Variants } from "framer-motion";
 import useMousePosition from "@util/hooks/useMousePosition";
-import { Footer } from "@components/footer/Index";
 
 /**
  * Because we are relying on the useWindowDimensions hook to fix
@@ -24,11 +23,11 @@ type HomeProps = {
 //We do not want to display to go up button on mobile
 //it is a little incosistent because of the mugshot
 //taking up more width than it should.
-const FadeDesktop = styled(Fade)(({theme})=>({
+const FadeDesktop = styled(Fade)(({ theme }) => ({
   "@media (max-width:768px)": {
-    display: 'none'
+    display: "none",
   },
-}))
+}));
 
 const Home = ({ window, ...props }: HomeProps) => {
   const { x, y } = useMousePosition();
@@ -39,7 +38,7 @@ const Home = ({ window, ...props }: HomeProps) => {
   });
   const [cursorVariant, setCursorVariant] = React.useState("default");
 
-  const variants = {
+  const variants: Variants = {
     default: {
       x: x - 16,
       y: y - 16,
@@ -63,7 +62,7 @@ const Home = ({ window, ...props }: HomeProps) => {
         <Hero {...props} />
         <About {...props} />
         <Experience {...props} />
-        <Contact {...props}/>
+        <Contact {...props} />
       </Grid>
       <FadeDesktop in={trigger}>
         <Box
@@ -81,11 +80,11 @@ const Home = ({ window, ...props }: HomeProps) => {
           </Fab>
         </Box>
       </FadeDesktop>
-      <motion.div
-        className="cursor"
-        variants={variants}
-        animate={cursorVariant}
-      />
+        <motion.div
+          className="cursor"
+          variants={variants}
+          animate={cursorVariant}
+        />
     </>
   );
 };
