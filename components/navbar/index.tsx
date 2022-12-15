@@ -32,6 +32,8 @@ import { navLinks } from "@util/config";
 import { useColorMode } from "@components/theme/ColorModeContext";
 import Link from "next/link";
 import Image from "next/image";
+import Logo from "@components/icons/Logo";
+
 
 type NavbarProps = {
   window?: () => Window;
@@ -139,6 +141,7 @@ const Navbar = (props: NavbarProps) => {
         <AppBar
           elevation={0}
           sx={{ zIndex: (theme) => theme.zIndex.drawer + 1 }}
+          color="inherit"
         >
           <Container maxWidth="xl">
             <Toolbar>
@@ -151,18 +154,12 @@ const Navbar = (props: NavbarProps) => {
               >
                 <IconMenu />
               </IconButton>
-              <Image
-                alt="aubry-lungu-logo"
-                src="/logos/aubry-lungu-logo-icon.svg"
-                height={40}
-                width={40}
-                style={{
-                  aspectRatio: 1,
-                }}
-              />
+              
+              <Logo color={theme.palette.secondary.main} height={40} width={40}/>
+
               <Box flexGrow={1} />
               <Stack direction="row" spacing={4}>
-                <Button variant="outlined" aria-label="Download resume">
+                <Button variant="outlined" aria-label="Download resume" color="secondary">
                   Resume
                 </Button>
                 <IconButton onClick={toggleColorMode} color="inherit" aria-label="ToggleColorMode">

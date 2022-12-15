@@ -1,21 +1,24 @@
 import { colors } from "@mui/material";
 
 const common = {
-  white: "#e6f1ff",
+  dullWhite: "#e6f1ff",
   blue: "#017FFF",
+  dullBlue: '#90caf9',
   lighterBlue: '#66B2FF',
   lightBlue: '#265D97',
   lightNavy: "#031E3C",
   navy: "#0B1929",
-  lightGrey: '#B1BAC2'
+  lightGrey: '#B1BAC2',
+  white: '#ffffff'
 };
 
 export const light = {
   primary: {
-    main: "#1976d2",
+    main: common.dullBlue,
   },
   secondary: {
-    main: "#9c27b0",
+    main: common.blue,
+    light: common.blue,
   },
   text: {
     // The most important text.
@@ -56,7 +59,7 @@ export const light = {
 
 export const dark = {
   primary: {
-    main: "#90caf9",
+    main: common.dullBlue,
     
   },
   secondary: {
@@ -64,7 +67,7 @@ export const dark = {
     light: common.lighterBlue,
   },
   text: {
-    primary: common.white,
+    primary: common.dullWhite,
     secondary: common.lightGrey,
     disabled: "rgba(255, 255, 255, 0.5)",
     icon: "rgba(255, 255, 255, 0.5)",
@@ -75,7 +78,7 @@ export const dark = {
     default: common.navy,
   },
   action: {
-    active: common.white,
+    active: common.dullWhite,
     hover: "rgba(255, 255, 255, 0.08)",
     hoverOpacity: 0.08,
     selected: "rgba(255, 255, 255, 0.16)",

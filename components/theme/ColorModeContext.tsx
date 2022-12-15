@@ -26,18 +26,6 @@ const componentsOverride: ThemeOptions["components"] = {
     },
   },
 
-  MuiButton: {
-    styleOverrides: {
-      outlined: {
-        //color: colors.secondary,
-      },
-    },
-  },
-  MuiTypography: {
-    defaultProps: {
-      //variant: 'h6',
-    },
-  },
   MuiCssBaseline: {
     styleOverrides: `
     @font-face {

@@ -28,7 +28,7 @@ export const Contact = ({ id = "contact", ...props }: ContactProps) => {
             hesitate to say hi to me.
           </Typography>
           <Box>
-          <Button variant="outlined" sx={{display: "flex", flexWrap: 'wrap'}}>Send me an email</Button>
+          <Button variant="outlined" sx={{display: "flex", flexWrap: 'wrap'}} color="secondary">Send me an email</Button>
           </Box>
       </SectionItem>
     </>
