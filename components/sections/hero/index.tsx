@@ -37,17 +37,14 @@ export const Hero = ({ id = "hero", ...props }: HeroProps) => {
         <Typography color="secondary.light" variant="body1">
           Hello there, I&apos;m
         </Typography>
-        <Typography
-          variant="h1"
-          color="inherit"
-          component={Parallax}
-          translateY={[-19, 19]}
-        >
-          <Box fontWeight="bold" display="inline" color="secondary.light">
-            Aubry{" "}
-          </Box>
-          Lungu.
-        </Typography>
+        <Parallax translateY={[-19, 19]}>
+          <Typography variant="h1" color="secondary.light">
+            Aubry
+          </Typography>
+          <Typography variant="h1" color="inherit">
+            Lungu.
+          </Typography>
+        </Parallax>
         <Typography color="text.secondary" component="div">
           <Box fontWeight="bold" display="inline">
             UX/UI Engineer, Software Engineer, Data Scientist, and Product
@@ -67,14 +64,15 @@ export const Hero = ({ id = "hero", ...props }: HeroProps) => {
       </SectionItem>
       <SectionGridItem item xs={12} md={4}>
         <MugShotBox>
-          <Parallax speed={95} rotate={[-20, 20]}>
+          <Parallax speed={95}>
             <div>
               <Image
                 alt={"Photo of the author"}
                 src={"/photo.jpeg"}
                 fill
-                sizes="(max-width: 1200px) 45vw,30vw"
-                quality={50}
+                sizes="(max-width: 1200px) 15vw,10vw"
+                quality={20}
+                priority
                 style={{
                   objectFit: "cover",
                   borderRadius: 5,

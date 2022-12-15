@@ -1,4 +1,4 @@
-import { Typography, Stack, Paper, Button, Box, Divider } from "@mui/material";
+import { Typography, Button, Box, Divider } from "@mui/material";
 import { SectionItem } from "../SectionItem";
 import { BaseSectionProps } from "../type/BaseProps";
 import { Parallax } from "react-scroll-parallax";

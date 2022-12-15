@@ -1,5 +1,5 @@
 import * as React from "react"
-import { SVGProps, memo } from "react"
+import { SVGProps } from "react"
 
 const Logo = ({color = "#4b91f1", ...props}: SVGProps<SVGSVGElement>) => (
   <svg

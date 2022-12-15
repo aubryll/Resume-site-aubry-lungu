@@ -31,7 +31,6 @@ import {
 import { navLinks } from "@util/config";
 import { useColorMode } from "@components/theme/ColorModeContext";
 import Link from "next/link";
-import Image from "next/image";
 import Logo from "@components/icons/Logo";
 
 

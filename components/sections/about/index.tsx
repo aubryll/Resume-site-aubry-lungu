@@ -12,7 +12,6 @@ import { SectionItem } from "../SectionItem";
 import type { BaseSectionProps } from "../type/BaseProps";
 import { Parallax } from "react-scroll-parallax";
 import { Stack } from "@mui/system";
-//import { colors } from "@components/theme/ColorModeContext";
 
 type AboutProps = BaseSectionProps;
 

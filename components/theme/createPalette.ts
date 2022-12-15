@@ -1,5 +1,3 @@
-import { colors } from "@mui/material";
-
 const common = {
   dullWhite: "#e6f1ff",
   blue: "#017FFF",
