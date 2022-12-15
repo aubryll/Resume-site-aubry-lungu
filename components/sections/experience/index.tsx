@@ -95,7 +95,7 @@ const Experience = ({ id = "experience", ...props }: ExperienceProps) => {
             Experience
           </Typography>
         </Divider>
-        <List>{workExperience.map(createItem)}</List>
+        {workExperience.map(createItem)}
       </SectionItem>
     </>
   );
