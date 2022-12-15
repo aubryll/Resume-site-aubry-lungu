@@ -54,6 +54,10 @@ export const ColorModeContextProvider = ({
     [mode]
   );
 
+  React.useEffect(() => {
+    setMode(prefersDarkMode ? "dark" : "light");
+}, [prefersDarkMode]);
+
   const theme = React.useMemo(
     () =>
       createTheme({
