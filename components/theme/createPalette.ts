@@ -12,7 +12,7 @@ const common = {
 
 export const light = {
   primary: {
-    main: common.dullBlue,
+    main: common.blue,
   },
   secondary: {
     main: common.blue,
