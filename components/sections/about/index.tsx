@@ -68,20 +68,20 @@ export const About = ({ id = "about", ...props }: AboutProps) => {
           <Typography color="text.secondary">
             Hello, my name is Aubry Lungu, and I like creating products that
             look and feel amazing. My interest was sparked in 2012, when I
-            created a calculator in HTML and CSS. It wasn't much, but it lit a
+            created a calculator in HTML and CSS. It wasn&apos;t much, but it lit a
             fire that began a career.
           </Typography>
           <Typography component="div"  color="text.secondary">
-            Today, I've had the privilege of working with amazing, talented
+            Today, I&apos;ve had the privilege of working with amazing, talented
             people in the{" "}
             <CustomLink href="https://first-quantum.com/">mining</CustomLink>,{" "}
             <CustomLink href="https://www.orbis.org/">health</CustomLink>, and{" "}
             <CustomLink href="https://www.abbank.co.zm/">banking</CustomLink>{" "}
-            sectors to create products that enhance people's lives and grow
+            sectors to create products that enhance people&apos;s lives and grow
             economies.
           </Typography>
           <Typography  color="text.secondary">
-            Here are some of the skills I've picked up during the course of my
+            Here are some of the skills I&apos;ve picked up during the course of my
             profession.
           </Typography>
           <SkillList>

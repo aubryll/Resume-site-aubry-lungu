@@ -39,8 +39,8 @@ export const Hero = ({ id = "hero", ...props }: HeroProps) => {
   return (
     <>
       <SectionItem item xs={12} md={8} {...props} id={id}>
-        <Typography color="inherit" variant="h4">
-          Hello there, I'm
+        <Typography color="secondary.light" variant="body1">
+          Hello there, I&apos;m
         </Typography>
         <Typography
           variant="h1"
@@ -62,7 +62,7 @@ export const Hero = ({ id = "hero", ...props }: HeroProps) => {
           mine.
         </Typography>
         <Typography component="div" color="text.secondary">
-          Currently, I'm a UX/UI engineer at{" "}
+          Currently, I&apos;m a UX/UI engineer at{" "}
           <CustomLink href="https://www.orbis.org/">
             Orbis International
           </CustomLink>

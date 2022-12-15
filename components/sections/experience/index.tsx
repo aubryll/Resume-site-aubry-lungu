@@ -20,7 +20,7 @@ import { CustomLink } from "@components/CustomLink";
 import { Parallax } from "react-scroll-parallax";
 import workExperience from "@api/data/experience.json";
 import useWindowDimensions from "@util/hooks/useDimensions";
-//import { colors } from "@components/theme/ColorModeContext";
+
 
 type ExperienceProps = BaseSectionProps;
 
@@ -120,7 +120,6 @@ const Experience = ({ id = "experience", ...props }: ExperienceProps) => {
                 TabIndicatorProps={{ color: "blue" }}
                 sx={{
                   ...(smMediaQuery && {
-                    //borderLeft: 1,
                     borderColor: "inherit",
                     textAlign: "left",
                     [`& .MuiTabs-indicator`]: {

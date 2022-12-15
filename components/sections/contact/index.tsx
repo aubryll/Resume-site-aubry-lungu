@@ -24,7 +24,7 @@ export const Contact = ({ id = "contact", ...props }: ContactProps) => {
           </Typography>
         </Divider>
           <Typography variant="inherit" color="text.secondary">
-            I'm always interested in having a pleasant chat, so please don't
+            I&apos;m always interested in having a pleasant chat, so please don&apos;t
             hesitate to say hi to me.
           </Typography>
           <Box>
