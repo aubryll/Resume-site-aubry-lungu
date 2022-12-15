@@ -19,7 +19,7 @@ type ColorModeContextProviderProps = {
 
 export const ColorModeContext = React.createContext<IColorModeContext>({
   toggleColorMode: () => {},
-  mode: "dark",
+  mode: "light",
 });
 
 const componentsOverride: ThemeOptions["components"] = {
@@ -48,7 +48,7 @@ export const ColorModeContextProvider = ({
   children,
 }: ColorModeContextProviderProps) => {
   const prefersDarkMode = useMediaQuery("(prefers-color-scheme: dark)");
-  const [mode, setMode] = React.useState<"light" | "dark">("dark");
+  const [mode, setMode] = React.useState<"light" | "dark">("light");
   const colorMode = React.useMemo(
     () => ({
       toggleColorMode: () => {
