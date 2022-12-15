@@ -6,7 +6,6 @@ export const Footer = (props: FooterProps) => {
   return (
     <Grid
       item
-      spacing={6}
       my={8}
       {...props}
       sx={{
