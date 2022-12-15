@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "build:prod": "next build && next export",
+    "production": "next build && next start",
     "prettier": "prettier --write \"**/*.{js,jsx,json,md}\""
   },
   "dependencies": {

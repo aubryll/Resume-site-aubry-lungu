@@ -158,7 +158,7 @@ const Navbar = (props: NavbarProps) => {
 
               <Box flexGrow={1} />
               <Stack direction="row" spacing={4}>
-                <Button variant="outlined" aria-label="Download resume" color="secondary">
+                <Button LinkComponent={Link} href="/Aubry_Lungu_Resume.pdf" variant="outlined" aria-label="Download resume" color="secondary">
                   Resume
                 </Button>
                 <IconButton onClick={toggleColorMode} color="inherit" aria-label="ToggleColorMode">

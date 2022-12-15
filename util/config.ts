@@ -7,10 +7,10 @@ export const navLinks = [
     name: "Experience",
     url: "/#experience",
   },
-  {
+ /* {
     name: "Projects",
     url: "/#projects",
-  },
+  },*/
   {
     name: "Contact",
     url: "/#contact",
