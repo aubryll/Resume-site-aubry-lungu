@@ -3,6 +3,7 @@ html {
   scroll-behavior: smooth !important;
 }
 
+/*
 @media only screen and (min-width: 768px) {
   *,
   html {
@@ -20,3 +21,4 @@ html {
     z-index: 10;
   }
 }
+*/
