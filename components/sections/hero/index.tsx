@@ -1,9 +1,5 @@
 import { CustomLink } from "@components/CustomLink";
-import {
-  Typography,
-  Box,
-  styled,
-} from "@mui/material";
+import { Typography, Box, styled } from "@mui/material";
 import Image from "next/image";
 import React from "react";
 import { SectionGridItem, SectionItem } from "../SectionItem";
@@ -15,7 +11,6 @@ type HeroProps = BaseSectionProps;
 const MugShotBox = styled(Box)(({ theme }) => ({
   width: "100%",
   height: "500px",
-  //backgroundColor: theme.palette.secondary.main,
   alignItems: "center",
   justifyContent: "center",
   [theme.breakpoints.down("md")]: {
@@ -49,7 +44,7 @@ export const Hero = ({ id = "hero", ...props }: HeroProps) => {
           translateY={[-19, 19]}
         >
           <Box fontWeight="bold" display="inline" color="secondary.light">
-          Aubry {" "}
+            Aubry{" "}
           </Box>
           Lungu.
         </Typography>
@@ -71,25 +66,25 @@ export const Hero = ({ id = "hero", ...props }: HeroProps) => {
         </Typography>
       </SectionItem>
       <SectionGridItem item xs={12} md={4}>
-        <MugShotBox component={Parallax} speed={95} rotate={[-20, 20]}>
-          <div>
-            <Image
-              alt={"head-shot"}
-              src={"/photo.jpeg"}
-              fill
-              priority={true}
-              sizes="(max-width: 768px) 95vw,
-            (max-width: 1200px) 45vw,
-            30vw"
-              quality={80}
-              style={{
-                objectFit: "cover",
-                borderRadius: 5,
-                position: "absolute",
-                aspectRatio: 1,
-              }}
-            />
-          </div>
+        <MugShotBox>
+          <Parallax speed={95} rotate={[-20, 20]}>
+            <div>
+              <Image
+                alt={"head-shot"}
+                src={"/photo.jpeg"}
+                fill
+                priority={true}
+                sizes="(max-width: 768px) 95vw, (max-width: 1200px) 45vw,30vw"
+                quality={80}
+                style={{
+                  objectFit: "cover",
+                  borderRadius: 5,
+                  position: "absolute",
+                  aspectRatio: 1,
+                }}
+              />
+            </div>
+          </Parallax>
         </MugShotBox>
       </SectionGridItem>
     </>
