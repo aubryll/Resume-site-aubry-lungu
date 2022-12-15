@@ -17,7 +17,7 @@ import { CustomLink } from "@components/CustomLink";
 import { Parallax } from "react-scroll-parallax";
 import workExperience from "@api/data/experience.json";
 import useWindowDimensions from "@util/hooks/useDimensions";
-import { useId } from "react";
+
 
 type ExperienceProps = BaseSectionProps;
 
@@ -100,10 +100,9 @@ const CreateItem = (
   { logo, link, location, role, name, from, to, duties }: Experience,
   index: number
 ) => {
-  const id = useId()
   return (
     <Stack
-      key={`${index}-${id}`}
+      key={index}
       direction="row"
       component={Card}
       variant="outlined"
@@ -158,7 +157,7 @@ const CreateItem = (
         </Typography>
         <List>
           {duties.map((duty, idx) => (
-            <ListItem disableGutters  key={`${idx}-${id}`}>
+            <ListItem disableGutters  key={idx}>
               <Typography color="inherit">
                 <Box
                   fontWeight="bold"
