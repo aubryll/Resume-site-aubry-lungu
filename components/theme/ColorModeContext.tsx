@@ -36,9 +36,9 @@ const componentsOverride: ThemeOptions["components"] = {
     @font-face {
       font-family: 'PlusJakartaSans';
       font-style: bold;
-      font-display: swap;
       font-weight: 800;
       src: url("/fonts/PlusJakartaSans-ExtraBold.woff");
+      font-display: optional;
     }
     `,
   },
