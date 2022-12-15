@@ -5,13 +5,16 @@ import {
   Grid,
   List,
   ListItem,
-  Stack,
+  ListItemIcon,
   Tab,
   Tabs,
   Typography,
   useMediaQuery,
   useTheme,
   Paper,
+  Card,
+  ListItemText,
+  Stack,
 } from "@mui/material";
 import { SectionItem } from "../SectionItem";
 import { BaseSectionProps } from "../type/BaseProps";
@@ -20,7 +23,6 @@ import { CustomLink } from "@components/CustomLink";
 import { Parallax } from "react-scroll-parallax";
 import workExperience from "@api/data/experience.json";
 import useWindowDimensions from "@util/hooks/useDimensions";
-
 
 type ExperienceProps = BaseSectionProps;
 
@@ -41,18 +43,25 @@ interface TabPanelProps {
   value: number;
 }
 
-
 const TabPanel = (props: TabPanelProps) => {
   const { children, value, index, ...other } = props;
+  const [visited, setVisited] = React.useState(false);
+  React.useEffect(() => {
+    if (value === index) {
+      setVisited(true);
+    }
+  }, [value, index]);
   return (
     <div
       role="tabpanel"
-      hidden={value !== index}
       id={`tabpanel-${index}`}
       aria-labelledby={`tab-${index}`}
+      style={{
+        visibility: value === index ? "visible" : "hidden",
+      }}
       {...other}
     >
-      {value === index && children}
+      {visited && children}
     </div>
   );
 };
@@ -86,63 +95,7 @@ const Experience = ({ id = "experience", ...props }: ExperienceProps) => {
             Experience
           </Typography>
         </Divider>
-        <Grid
-          component={Paper}
-          variant="outlined"
-          p={3}
-          {...(smMediaQuery && {
-            container: true,
-            rowSpacing: 4,
-          })}
-        >
-          <Grid item sm={12} md={3}>
-            <Box
-              sx={{
-                maxWidth: {
-                  //Fix for unresponsive/overflowing MUI tabs on mobile
-                  xs: width ? width * 0.7 : 320,
-                  sm: width ? width * 0.7 : 480,
-                  md: "100%",
-                },
-                "@media (max-width:768px)": {
-                  mb: 4,
-                },
-              }}
-            >
-              <Tabs
-                value={selectedTab}
-                onChange={handleTabChange}
-                orientation={smMediaQuery ? "vertical" : "horizontal"}
-                variant="scrollable"
-                allowScrollButtonsMobile
-                indicatorColor="secondary"
-                scrollButtons="auto"
-                aria-label="Where I've worked"
-                TabIndicatorProps={{ color: "blue" }}
-                sx={{
-                  ...(smMediaQuery && {
-                    borderColor: "inherit",
-                    textAlign: "left",
-                    [`& .MuiTabs-indicator`]: {
-                      left: "0px",
-                    },
-                  }),
-                }}
-              >
-                {workExperience.map(({ name }, idx) => (
-                  <Tab key={idx} label={name} id={`tab-${idx}`} />
-                ))}
-              </Tabs>
-            </Box>
-          </Grid>
-          <Grid item sm={12} md={9}>
-            {workExperience.map((item, idx) => (
-              <TabPanel key={idx} value={selectedTab} index={idx}>
-                {createItem(item, idx)}
-              </TabPanel>
-            ))}
-          </Grid>
-        </Grid>
+        <List>{workExperience.map(createItem)}</List>
       </SectionItem>
     </>
   );
@@ -153,8 +106,11 @@ const createItem = (
   index: number
 ) => {
   return (
-    <Stack key={index} alignItems="flex-start" color="inherit">
-      <Stack direction="row" alignItems="center">
+    <Stack key={index} direction="row" component={Card} 
+    variant="outlined" alignItems="flex-start" 
+    color="inherit" my={4}
+    p={3}
+    >
         <Box
           sx={{
             height: 80,
@@ -181,8 +137,9 @@ const createItem = (
             }}
           />
         </Box>
-        <Stack>
-          <Typography
+
+      <Stack>
+      <Typography
             variant="subtitle1"
             fontWeight="bold"
             component="div"
@@ -198,8 +155,6 @@ const createItem = (
           <Typography color="inherit">
             {`${from} - ${to} in ${location}`}
           </Typography>
-        </Stack>
-      </Stack>
       <List>
         {duties.map((duty, idx) => (
           <ListItem disableGutters key={idx}>
@@ -217,6 +172,7 @@ const createItem = (
           </ListItem>
         ))}
       </List>
+      </Stack>
     </Stack>
   );
 };
