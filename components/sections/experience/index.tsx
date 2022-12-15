@@ -2,18 +2,12 @@ import * as React from "react";
 import {
   Box,
   Divider,
-  Grid,
   List,
   ListItem,
-  ListItemIcon,
-  Tab,
-  Tabs,
   Typography,
   useMediaQuery,
   useTheme,
-  Paper,
   Card,
-  ListItemText,
   Stack,
 } from "@mui/material";
 import { SectionItem } from "../SectionItem";
@@ -23,6 +17,7 @@ import { CustomLink } from "@components/CustomLink";
 import { Parallax } from "react-scroll-parallax";
 import workExperience from "@api/data/experience.json";
 import useWindowDimensions from "@util/hooks/useDimensions";
+import { useId } from "react";
 
 type ExperienceProps = BaseSectionProps;
 
@@ -105,73 +100,79 @@ const createItem = (
   { logo, link, location, role, name, from, to, duties }: Experience,
   index: number
 ) => {
+  const id = useId()
   return (
-    <Stack key={index} direction="row" component={Card} 
-    variant="outlined" alignItems="flex-start" 
-    color="inherit" my={4}
-    p={3}
+    <Stack
+      key={`${index}-${id}`}
+      direction="row"
+      component={Card}
+      variant="outlined"
+      alignItems="flex-start"
+      color="inherit"
+      my={4}
+      p={3}
     >
-        <Box
-          sx={{
-            height: 80,
-            width: 80,
-            background: "white",
-            borderRadius: 1,
-            marginRight: 4,
-            alignItems: "center",
-            justifyContent: "center",
-            "@media (max-width:768px)": {
-              display: "none",
-            },
+      <Box
+        sx={{
+          height: 80,
+          width: 80,
+          background: "white",
+          borderRadius: 1,
+          marginRight: 4,
+          alignItems: "center",
+          justifyContent: "center",
+          "@media (max-width:768px)": {
+            display: "none",
+          },
+        }}
+      >
+        <Image
+          src={logo}
+          height={80}
+          width={80}
+          alt={`${name}-logo`}
+          style={{
+            objectFit: "scale-down",
+            borderRadius: 5,
+            aspectRatio: 1,
           }}
-        >
-          <Image
-            src={logo}
-            height={80}
-            width={80}
-            alt={`${name}-logo`}
-            style={{
-              objectFit: "scale-down",
-              borderRadius: 5,
-              aspectRatio: 1,
-            }}
-          />
-        </Box>
+        />
+      </Box>
 
       <Stack>
-      <Typography
-            variant="subtitle1"
-            fontWeight="bold"
-            component="div"
-            color="inherit"
-            mb={1}
-          >
-            {`${role} `}
-            <Box color={"inherit"} display="inline">
-              <CustomLink href={link}>{`@ ${name}`}</CustomLink>
-            </Box>
-          </Typography>
+        <Typography
+          variant="subtitle1"
+          fontWeight="bold"
+          component="div"
+          color="inherit"
+          mb={1}
+        >
+          {`${role} `}
+          <Box color={"inherit"} display="inline">
+            <CustomLink href={link}>{`@ ${name}`}</CustomLink>
+          </Box>
+        </Typography>
 
-          <Typography color="inherit">
-            {`${from} - ${to} in ${location}`}
-          </Typography>
-      <List>
-        {duties.map((duty, idx) => (
-          <ListItem disableGutters key={idx}>
-            <Typography color="inherit">
-              <Box
-                fontWeight="bold"
-                component="span"
-                display="inline"
-                color="secondary.light"
-              >
-                {`\u25CF `}
-              </Box>
-              {duty}
-            </Typography>
-          </ListItem>
-        ))}
-      </List>
+        <Typography color="inherit">
+          {`${from} - ${to} in ${location}`}
+        </Typography>
+        <List>
+          {duties.map((duty, idx) => (
+            <ListItem disableGutters  key={`${idx}-${id}`}>
+              <Typography color="inherit">
+                <Box
+                  fontWeight="bold"
+                  component="span"
+                  display="inline"
+                  color="secondary.light"
+                >
+                  {`\u25CF `}
+                </Box>
+                {duty}
+              </Typography>
+            </ListItem>
+          ))}
+        </List>
       </Stack>
     </Stack>
   );
