@@ -61,7 +61,9 @@ const Home = ({ window, ...props }: HomeProps) => {
       <Grid container spacing={4} mb={4} {...props}>
         <Hero {...props} />
         <About {...props} />
-        <Experience {...props} />
+        {
+          //<Experience {...props} />
+        }
         <Contact {...props} />
       </Grid>
       <FadeDesktop in={trigger}>
