@@ -7,6 +7,7 @@ import Head from "next/head";
 import { ColorModeContextProvider } from "@components/theme/ColorModeContext";
 import { StyledEngineProvider } from "@mui/material";
 import { ParallaxProvider } from "react-scroll-parallax";
+import { Analytics } from '@vercel/analytics/react';
 
 export default function MyApp({ Component, pageProps }: AppProps) {
   return (
@@ -51,6 +52,7 @@ export default function MyApp({ Component, pageProps }: AppProps) {
             <Layout>
               <Component {...pageProps} />
             </Layout>
+            <Analytics/>
           </React.Fragment>
         </ParallaxProvider>
       </ColorModeContextProvider>

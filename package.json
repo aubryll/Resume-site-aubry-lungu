@@ -17,6 +17,7 @@
     "@mui/icons-material": "^5.10.15",
     "@mui/material": "^5.10.15",
     "@tabler/icons": "^1.114.0",
+    "@vercel/analytics": "^0.1.6",
     "axios": "^1.2.1",
     "axios-auth-refresh": "^3.3.4",
     "eslint": "8.29.0",
