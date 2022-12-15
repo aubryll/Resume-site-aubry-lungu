@@ -1,20 +1,9 @@
 import * as React from "react";
-import { Hero, About, Contact } from "@components/sections";
+import { Hero, About, Contact, Experience } from "@components/sections";
 import { Fab, Fade, Grid, Box, useScrollTrigger, styled } from "@mui/material";
 import { IconArrowUp } from "@tabler/icons";
-import dynamic from "next/dynamic";
-import { motion, Variants } from "framer-motion";
-import useMousePosition from "@util/hooks/useMousePosition";
 
-/**
- * Because we are relying on the useWindowDimensions hook to fix
- * the width overflow bug on the tabs on mobile, we need to disable SSR
- * on this component otherwise the component on the server and client
- * will never be the same.
- */
-const Experience = dynamic(() => import("@components/sections/experience"), {
-  ssr: false,
-});
+
 
 type HomeProps = {
   window?: () => Window;
@@ -30,31 +19,12 @@ const FadeDesktop = styled(Fade)(({ theme }) => ({
 }));
 
 const Home = ({ window, ...props }: HomeProps) => {
-  const { x, y } = useMousePosition();
   const trigger = useScrollTrigger({
     target: window ? window() : undefined,
     disableHysteresis: true,
     threshold: 100,
   });
-  const [cursorVariant, setCursorVariant] = React.useState("default");
 
-  const variants: Variants = {
-    default: {
-      x: x - 16,
-      y: y - 16,
-    },
-    text: {
-      height: 150,
-      width: 150,
-      x: x - 75,
-      y: y - 75,
-      backgroundColor: "yellow",
-      mixBlendMode: "difference",
-    },
-  };
-
-  const textEnter = () => setCursorVariant("text");
-  const textLeave = () => setCursorVariant("default");
 
   return (
     <>
@@ -80,11 +50,6 @@ const Home = ({ window, ...props }: HomeProps) => {
           </Fab>
         </Box>
       </FadeDesktop>
-        <motion.div
-          className="cursor"
-          variants={variants}
-          animate={cursorVariant}
-        />
     </>
   );
 };

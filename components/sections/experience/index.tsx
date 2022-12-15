@@ -5,8 +5,6 @@ import {
   List,
   ListItem,
   Typography,
-  useMediaQuery,
-  useTheme,
   Card,
   Stack,
 } from "@mui/material";
@@ -16,7 +14,6 @@ import Image from "next/image";
 import { CustomLink } from "@components/CustomLink";
 import { Parallax } from "react-scroll-parallax";
 import workExperience from "@api/data/experience.json";
-import useWindowDimensions from "@util/hooks/useDimensions";
 
 
 type ExperienceProps = BaseSectionProps;
@@ -62,21 +59,6 @@ const TabPanel = (props: TabPanelProps) => {
 };
 
 const Experience = ({ id = "experience", ...props }: ExperienceProps) => {
-  const [selectedTab, setSelectedTab] = React.useState(0);
-  const [hasMounted, setHasMounted] = React.useState(false);
-  const { width } = useWindowDimensions();
-  const theme = useTheme();
-  const smMediaQuery = useMediaQuery(theme.breakpoints.up("sm"));
-
-  React.useEffect(() => {
-    setHasMounted(true);
-  }, []);
-
-  if (!hasMounted && !width) return <></>;
-
-  const handleTabChange = (event: React.SyntheticEvent, newValue: number) => {
-    setSelectedTab(newValue);
-  };
   return (
     <>
       <SectionItem item md={8} xs={12} {...props} id={id}>
