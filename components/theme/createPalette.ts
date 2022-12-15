@@ -12,11 +12,10 @@ const common = {
 
 export const light = {
   primary: {
-    main: common.blue,
+    main: common.lightNavy,
   },
   secondary: {
-    main: common.blue,
-    light: common.blue,
+    main: common.navy,
   },
   text: {
     // The most important text.
