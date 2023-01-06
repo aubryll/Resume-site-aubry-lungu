@@ -12,6 +12,7 @@ import { SectionItem } from "../SectionItem";
 import type { BaseSectionProps } from "../type/BaseProps";
 import { Parallax } from "react-scroll-parallax";
 import { Stack } from "@mui/system";
+import { memo } from "react";
 
 type AboutProps = BaseSectionProps;
 
@@ -39,7 +40,7 @@ const skills = [
   "Data analysis",
 ];
 
-export const About = ({ id = "about", ...props }: AboutProps) => {
+export const About = memo(({ id = "about", ...props }: AboutProps) => {
   return (
     <>
       <SectionItem item md={8} xs={12} {...props} id={id}>
@@ -106,4 +107,4 @@ export const About = ({ id = "about", ...props }: AboutProps) => {
       </SectionItem>
     </>
   );
-};
+});

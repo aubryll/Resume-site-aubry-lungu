@@ -71,7 +71,7 @@ export const Hero = ({ id = "hero", ...props }: HeroProps) => {
                 src={"/photo.jpeg"}
                 fill
                 sizes="(max-width: 1200px) 15vw,10vw"
-                quality={20}
+                quality={50}
                 priority
                 style={{
                   objectFit: "cover",

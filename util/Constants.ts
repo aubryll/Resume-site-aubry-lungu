@@ -1,5 +1,7 @@
 import { KeyVal } from "./types";
 
+export const isBrowser = () => typeof window !== 'undefined'; 
+
 export const orderStatuses: KeyVal[] = [
   { title: "Cart", value: "cart", key: "filter[state_eq]" },
   { title: "Address", value: "address", key: "filter[state_eq]" },
