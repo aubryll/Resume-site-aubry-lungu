@@ -108,3 +108,7 @@ export const About = memo(({ id = "about", ...props }: AboutProps) => {
     </>
   );
 });
+
+
+About.displayName = 'About';
+
